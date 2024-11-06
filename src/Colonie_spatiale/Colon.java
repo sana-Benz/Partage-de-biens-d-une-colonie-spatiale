@@ -5,13 +5,13 @@ public class Colon {
     private char nom;
     private ArrayList <Preference> preferences;
     private ArrayList <Colon> ennemis;
-    //private Colonie colonie;
+    private Ressource ressourceAttribuée ;
 
     public Colon(char nom) {
         this.nom = nom;
         this.preferences = new ArrayList<>();
         this.ennemis = new ArrayList<>();
-        //this.colonie=colonie;
+        this.ressourceAttribuée=null;
     }
 
     public char getNom() {
@@ -24,8 +24,26 @@ public class Colon {
         preferences.add(p);
 
     }
+    public ArrayList<Preference> getlistepreferences(){
+        return preferences;
+    }
+    public void setRessourceAttribuée(Ressource r){
+        ressourceAttribuée = r;
+    }
+    public Ressource getRessourceAttribuée(){
+        return ressourceAttribuée;
+    }
 
+    public ArrayList<Colon> getEnnemis(){
+        return ennemis;
+    }
 
+    public boolean prefereObjet(Ressource ressource) {
+        // Comparaison des ressources en fonction de leur ordre de préférence
+        boolean result= this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuée);
+        System.out.println("Le colon préfère " + ressource + " ? " + result);
+        return result;
+    }
 
 
 }
