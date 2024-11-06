@@ -25,6 +25,12 @@ public class Colon {
 
     }
 
+    public void ajoutEnnemi (Colon c) throws ExceptionColon {
+        if (ennemis.size() > get(n)-1) {
+            throw new ExceptionColon("");
+        }
+        ennemis.add(c);
+    }
 
 
 
