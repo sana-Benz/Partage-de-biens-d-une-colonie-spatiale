@@ -40,7 +40,7 @@ public class Main {
                     colon1.ajoutennemi(colon2);
                     colon2.ajoutennemi(colon1);
                 } else {  
-                    System.out.println("Erreur de lecture de colons, veuillez entrer deux caractères.");
+                    System.out.println("Erreur de lecture de colon  s, veuillez entrer deux caractères.");
                 }
                 break;
 
