@@ -3,8 +3,8 @@ import java.util.*;
 
 public class Colon {
     private char nom;
-    private List <Preference> preferences;
-    private List <Colon> ennemis;
+    private ArrayList <Preference> preferences;
+    private ArrayList <Colon> ennemis;
     //private Colonie colonie;
 
     public Colon(char nom) {

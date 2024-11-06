@@ -46,9 +46,13 @@ public class Main {
 
             case 2 :
                 System.out.println("Entrez toutes les préférences d'un colon en ordre décroissant (par exemple, A 1 2 3)  :");
-                //il faut verifier les preferences concerne un colon existant et n preferences
+                // et n preferences
                 String input1 = scanner1.nextLine();
                 String[] les_parts = input1.split(" ");
+                if ( les_parts.length != n+1){
+                    System.out.println("Il faut préciser les préferences de toutes les options possibles");
+                    break;
+                }
                 char nomColon = les_parts[0].charAt(0); 
                 Colon colon=colonie.getColon(nomColon);
                 if (colon == null){
@@ -60,6 +64,10 @@ public class Main {
                     colon.ajoutpreference(opt);
                 }
                 break;
+            case 3:
+                for(Colon c: colonie.getlistecolons()){
+
+                }
             default: 
                 System.out.println("choix invalide, veuillez réessayer");
                 break;

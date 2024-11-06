@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Colonie {
     public int n;
-    private List <Colon> colons;
+    private ArrayList <Colon> colons;
 
     public Colonie(int n) throws ExceptionColon {
         if (n > 26) {
@@ -40,5 +40,8 @@ public class Colonie {
             throw new ExceptionColon("Le nombre de colons ne peut pas dépasser le nombre donné.");
         }
         colons.add(c);
+    }
+    public ArrayList getlistecolons(){
+        return colons;
     }
 }
