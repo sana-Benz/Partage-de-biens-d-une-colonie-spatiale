@@ -2,15 +2,15 @@ package Colonie_spatiale;
 import java.util.*;
 
 public class Preference {
-    private String nom;
+    private char nom;
 
-    public Preference(String nom) {
+    public Preference(char nom) {
         this.nom = nom;
     }
-    public String getNom() {
+    public char getNom() {
         return nom;
     }
-    public void setNom(String nom) {
+    public void setNom(char nom) {
         this.nom = nom;
     }
 }

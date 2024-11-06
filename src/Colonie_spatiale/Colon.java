@@ -2,18 +2,27 @@ package Colonie_spatiale;
 import java.util.*;
 
 public class Colon {
-    private String nom;
+    private char nom;
     private List <Preference> preferences;
     private List <Colon> ennemis;
+    //private Colonie colonie;
 
-    public Colon(String nom) {
+    public Colon(char nom) {
         this.nom = nom;
         this.preferences = new ArrayList<>();
         this.ennemis = new ArrayList<>();
+        //this.colonie=colonie;
     }
 
-    public String getNom() {
+    public char getNom() {
         return nom;
+    }
+    public void ajoutennemi(Colon c) {
+            ennemis.add(c); 
+        } 
+    public void ajoutpreference(Preference p){
+        preferences.add(p);
+
     }
 
 

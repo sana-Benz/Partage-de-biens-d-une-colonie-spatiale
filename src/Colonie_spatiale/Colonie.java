@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Colonie {
-    private int n;
+    public int n;
     private List <Colon> colons;
 
     public Colonie(int n) throws ExceptionColon {
@@ -14,6 +14,24 @@ public class Colonie {
         }
         this.n = n;
         this.colons = new ArrayList<>();
+
+        for (char lettre = 'A'; lettre <= 'Z' && colons.size() < n; lettre++) {
+            Colon c = new Colon(lettre);
+             colons.add(c); } 
+    }
+
+    public  int getn(){
+        return n;
+    }
+
+    public Colon getColon(char nom){
+
+        for(Colon x : colons){
+            if(x.getNom()==nom){
+                return x;
+            }
+        }
+        return null;
     }
 
 
