@@ -43,19 +43,20 @@ public class Colon {
         return ennemis;
     }
 
-    public boolean prefereObjet(Ressource ressource) {
+    /*public boolean prefereObjet(Ressource ressource) {
         // Comparaison des ressources en fonction de leur ordre de préférence
         boolean result= this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuée);
         System.out.println("Le colon préfère " + ressource + " ? " + result);
         return result;
-    }
-    /*public boolean prefereObjet(Ressource ressource) {
+    }*/
+    public boolean prefereObjet(Ressource ressource) {
         if (this.ressourceAttribuée == null || ressource == null) {
             System.out.println("Erreur : ressourceAttribuée ou ressource est null");
             return false;
         }
         if (!this.preferences.contains(ressource)) {
             System.out.println("Erreur : la ressource " + ressource + " n'est pas trouvée dans les préférences de " + nom);
+            System.out.println("préference du colon"+nom+": "+this.preferences);
             return false;
         }
         if (!this.preferences.contains(this.ressourceAttribuée)) {
@@ -65,7 +66,7 @@ public class Colon {
         boolean result = this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuée);
         System.out.println("Le colon " + nom + " préfère " + ressource + " à " + this.ressourceAttribuée + " ? " + result);
         return result;
-    }*/
+    }
 
 
 }

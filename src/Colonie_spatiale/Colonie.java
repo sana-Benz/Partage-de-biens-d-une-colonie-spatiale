@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Colonie {
     public int n;
-    private ArrayList <Colon> colons;
+    private List <Colon> colons;
     private Map<Ressource,Colon> ressources;
 
     public Colonie(int n) throws ExceptionColon {
@@ -48,7 +48,7 @@ public class Colonie {
         }
         colons.add(c);
     }
-    public ArrayList<Colon> getlistecolons(){
+    public List<Colon> getlistecolons(){
         return colons;
     }
     public Map<Ressource, Colon> getRessources() {

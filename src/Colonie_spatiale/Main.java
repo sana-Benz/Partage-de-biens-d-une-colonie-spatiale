@@ -68,7 +68,7 @@ public class Main {
                     Ressource opt = new Ressource(les_parts[i].charAt(0));
                     colon.ajoutpreference(opt);
                 }
-                //colon.AfficherListePref();
+                colon.AfficherListePref();
                 break;
             case 3:
                 incomplet=false;
