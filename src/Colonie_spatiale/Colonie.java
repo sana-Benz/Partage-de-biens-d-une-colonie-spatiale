@@ -57,7 +57,7 @@ public class Colonie {
     //solution naive
     public void affectationNaive(){
         for (Colon c : colons){
-            for (Preference p : c.getlistepreferences()){
+            for (Ressource p : c.getlistepreferences()){
                 Ressource ressource = getRessourceParNom(p.getNom());
                 if (ressource !=null && ressources.get(ressource)==null){
                     c.setRessourceAttribuée(ressource);
@@ -75,13 +75,12 @@ public class Colonie {
 
         for (Colon colon : this.colons) {
             for (Colon ennemi : colon.getEnnemis()) {
-                Ressource ressourceColon = colon.getRessourceAttribuée();
                 Ressource ressourceEnnemi = ennemi.getRessourceAttribuée();
 
-                if (colon.prefereObjet(ressourceEnnemi) && !ressourceColon.equals(ressourceEnnemi)) {
+                if (colon.prefereObjet(ressourceEnnemi)){        //!ressourceColon.equals(ressourceEnnemi)) {
                     System.out.println("Le colon " + colon.getNom() + " est jaloux de l'ennemi " + ennemi.getNom() + " avec ressource " + ressourceEnnemi);
                     nombreJaloux++;
-                    break;
+
                 }
             }
         }

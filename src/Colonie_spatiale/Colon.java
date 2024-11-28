@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Colon {
     private char nom;
-    private ArrayList <Preference> preferences;
+    private ArrayList <Ressource> preferences;
     private ArrayList <Colon> ennemis;
     private Ressource ressourceAttribuée ;
 
@@ -20,13 +20,18 @@ public class Colon {
     public void ajoutennemi(Colon c) {
             ennemis.add(c); 
         } 
-    public void ajoutpreference(Preference p){
+    public void ajoutpreference(Ressource p){
         preferences.add(p);
 
     }
-    public ArrayList<Preference> getlistepreferences(){
+    public ArrayList<Ressource> getlistepreferences(){
         return preferences;
     }
+
+    public void AfficherListePref(){
+        System.out.println("préference du colon"+nom+": "+this.preferences);
+    }
+
     public void setRessourceAttribuée(Ressource r){
         ressourceAttribuée = r;
     }
@@ -44,6 +49,23 @@ public class Colon {
         System.out.println("Le colon préfère " + ressource + " ? " + result);
         return result;
     }
+    /*public boolean prefereObjet(Ressource ressource) {
+        if (this.ressourceAttribuée == null || ressource == null) {
+            System.out.println("Erreur : ressourceAttribuée ou ressource est null");
+            return false;
+        }
+        if (!this.preferences.contains(ressource)) {
+            System.out.println("Erreur : la ressource " + ressource + " n'est pas trouvée dans les préférences de " + nom);
+            return false;
+        }
+        if (!this.preferences.contains(this.ressourceAttribuée)) {
+            System.out.println("Erreur : la ressource attribuée " + this.ressourceAttribuée + " n'est pas trouvée dans les préférences de " + nom);
+            return false;
+        }
+        boolean result = this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuée);
+        System.out.println("Le colon " + nom + " préfère " + ressource + " à " + this.ressourceAttribuée + " ? " + result);
+        return result;
+    }*/
 
 
 }

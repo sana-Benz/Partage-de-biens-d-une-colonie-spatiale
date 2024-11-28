@@ -65,9 +65,10 @@ public class Main {
                     break;
                 }
                 for (int i=1; i<les_parts.length; i++){
-                    Preference opt = new Preference(les_parts[i].charAt(0));
+                    Ressource opt = new Ressource(les_parts[i].charAt(0));
                     colon.ajoutpreference(opt);
                 }
+                //colon.AfficherListePref();
                 break;
             case 3:
                 incomplet=false;

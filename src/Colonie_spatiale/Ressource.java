@@ -14,5 +14,8 @@ public class Ressource {
     public void setNom(char nom) {
         this.nom = nom;
     }
+    public String toString(){
+        return "la ressource est "+nom;
+    }
 
 }
