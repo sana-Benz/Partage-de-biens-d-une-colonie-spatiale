@@ -17,5 +17,15 @@ public class Ressource {
     public String toString(){
         return "la ressource est "+nom;
     }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ressource ressource = (Ressource) o;
+        return nom == ressource.nom;
+    }
 
+    @Override
+    public int hashCode() {
+        return Character.hashCode(nom);
+    }
 }

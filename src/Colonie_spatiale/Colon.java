@@ -5,13 +5,13 @@ public class Colon {
     private char nom;
     private ArrayList <Ressource> preferences;
     private ArrayList <Colon> ennemis;
-    private Ressource ressourceAttribuée ;
+    private Ressource ressourceAttribuee ;
 
     public Colon(char nom) {
         this.nom = nom;
         this.preferences = new ArrayList<>();
         this.ennemis = new ArrayList<>();
-        this.ressourceAttribuée=null;
+        this.ressourceAttribuee=null;
     }
 
     public char getNom() {
@@ -33,10 +33,10 @@ public class Colon {
     }
 
     public void setRessourceAttribuée(Ressource r){
-        ressourceAttribuée = r;
+        ressourceAttribuee = r;
     }
     public Ressource getRessourceAttribuée(){
-        return ressourceAttribuée;
+        return ressourceAttribuee;
     }
 
     public ArrayList<Colon> getEnnemis(){
@@ -50,7 +50,7 @@ public class Colon {
         return result;
     }*/
     public boolean prefereObjet(Ressource ressource) {
-        if (this.ressourceAttribuée == null || ressource == null) {
+        if (this.ressourceAttribuee == null || ressource == null) {
             System.out.println("Erreur : ressourceAttribuée ou ressource est null");
             return false;
         }
@@ -59,12 +59,12 @@ public class Colon {
             System.out.println("préference du colon"+nom+": "+this.preferences);
             return false;
         }
-        if (!this.preferences.contains(this.ressourceAttribuée)) {
-            System.out.println("Erreur : la ressource attribuée " + this.ressourceAttribuée + " n'est pas trouvée dans les préférences de " + nom);
+        if (!this.preferences.contains(this.ressourceAttribuee)) {
+            System.out.println("Erreur : la ressource attribuée " + this.ressourceAttribuee + " n'est pas trouvée dans les préférences de " + nom);
             return false;
         }
-        boolean result = this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuée);
-        System.out.println("Le colon " + nom + " préfère " + ressource + " à " + this.ressourceAttribuée + " ? " + result);
+        boolean result = this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuee);
+        System.out.println("Le colon " + nom + " préfère " + ressource + " à " + this.ressourceAttribuee + " ? " + result);
         return result;
     }
 
