@@ -1,4 +1,5 @@
-package Colonie_spatiale;
+package Colonie_spatiale.CreationColonie;
+
 import java.util.*;
 
 public class Colon {

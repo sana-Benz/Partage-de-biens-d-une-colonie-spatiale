@@ -1,6 +1,7 @@
-package Colonie_spatiale;
+package Colonie_spatiale.CreationColonie;
 
-import java.io.IOException;
+import Colonie_spatiale.ExceptionColon;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

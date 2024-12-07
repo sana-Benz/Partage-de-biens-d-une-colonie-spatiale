@@ -1,4 +1,4 @@
-package Colonie_spatiale;
+package Colonie_spatiale.CreationColonie;
 
 public class Ressource {
     private char nom;
