@@ -27,3 +27,12 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Ignorer les fichiers générés par Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+*.snap
+*.markers
+*.xml
