@@ -1,6 +1,7 @@
-package Colonie_spatiale;
+package Colonie_spatiale.CreationColonie;
 
-import java.io.IOException;
+import Colonie_spatiale.ExceptionColon;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 public class Colonie {
     public int n;
-    private ArrayList <Colon> colons;
+    private List <Colon> colons;
     private Map<Ressource,Colon> ressources;
 
     public Colonie(int n) throws ExceptionColon {
@@ -48,7 +49,7 @@ public class Colonie {
         }
         colons.add(c);
     }
-    public ArrayList<Colon> getlistecolons(){
+    public List<Colon> getlistecolons(){
         return colons;
     }
     public Map<Ressource, Colon> getRessources() {

@@ -1,5 +1,4 @@
-package Colonie_spatiale;
-import java.util.*;
+package Colonie_spatiale.CreationColonie;
 
 public class Preference {
     private char nom;
