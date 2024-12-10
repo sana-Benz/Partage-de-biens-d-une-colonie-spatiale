@@ -7,12 +7,12 @@ import Colonie_spatiale.CreationColonie.Menu1;
 import java.util.Scanner;
 
 public class Main {
-    public static int n; // Déclaration statique pour utilisation globale
+    public static int n; // Déclaration statique pour utilisation globale 
 
     public static void main(String[] args) throws ExceptionColon {
         Scanner scanner = new Scanner(System.in);  // Création du scanner une seule fois
 
-        System.out.println("Entrez la taille de la colonie spatiale");
+        System.out.println("Entrez la taille de la colonie spatiale");//******************************** */
         n = scanner.nextInt();
         scanner.nextLine();  // Consomme le saut de ligne après nextInt()
 
