@@ -1,5 +1,7 @@
 package Colonie_spatiale.CreationColonie;
 
+import Colonie_spatiale.ExceptionColon;
+
 import java.util.*;
 
 public class Colon {

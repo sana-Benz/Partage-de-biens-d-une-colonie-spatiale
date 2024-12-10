@@ -2,30 +2,27 @@ package Colonie_spatiale.CreationColonie;
 
 import Colonie_spatiale.ExceptionColon;
 
-
 import java.util.Scanner;
 
 public class Menu1 {
     private int n;
     int choix;
-    Colonie colonie = null;
+    private static Colonie colonie; // Champ statique
 
-    public Menu1(int n){
+    public Menu1(int n) throws ExceptionColon {
+        colonie = new Colonie(n); // Initialisation de la colonie
         this.n = n;
     }
 
-    public int getN(){
+    public int getN() {
         return n;
     }
 
-    public static Colonie getColonie(){
+    public static Colonie getColonie() {
         return colonie;
     }
 
-
-    public void afficherMenu1() {
-
-
+    public void afficherMenu1(Scanner scanner1) {
         // Initialisation de la colonie
         try {
             colonie = new Colonie(n);
@@ -33,8 +30,6 @@ public class Menu1 {
             System.err.println("Erreur lors de la création de la colonie : " + e.getMessage());
             return; // Stoppe l'exécution si la colonie ne peut pas être créée
         }
-
-        Scanner scanner1 = new Scanner(System.in);
 
         boolean incomplet = true;
 
@@ -119,12 +114,5 @@ public class Menu1 {
                     break;
             }
         } while (choix != 3 || incomplet);
-
-        // Fermer le scanner
-        scanner1.close();
     }
-
-    // il faut ajouter à la fin un affichage qui résume la colonie
-    //resumé
-
 }

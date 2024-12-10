@@ -1,35 +1,31 @@
 package Colonie_spatiale.AttributionRessources;
 
 import Colonie_spatiale.CreationColonie.Colon;
+import Colonie_spatiale.CreationColonie.Colonie;
 
 import java.util.Scanner;
 
-import Colonie_spatiale.CreationColonie.Colonie;
-import Colonie_spatiale.Main;
-import Colonie_spatiale.CreationColonie.Menu1;
-
-
-
 public class Menu2 {
-    private int choix ;
+    private int choix;
 
+    private Colonie colonie; // Référence à la colonie partagée
 
+    public Menu2(Colonie colonie) {
+        this.colonie = colonie; // Réutilisation de l'instance
+    }
 
-
-    public void afficherMenu2() {
-        Colonie colonie = Menu1.getColonie();
+    public void afficherMenu2(Scanner scanner1) {
         colonie.affectationNaive();
 
         do {
-            //affiche le 2eme menu
-
+            // Affiche le 2ème menu
             System.out.println("Veuillez entrer votre choix pour le deuxieme menu");
             System.out.println("1 Echanger les ressources de deux colons");
             System.out.println("2 Afficher le nombre de colons jaloux ");
             System.out.println("3 Fin ");
-            Scanner scanner1 = new Scanner(System.in);
+
             choix = scanner1.nextInt();
-            scanner1.nextLine();
+            scanner1.nextLine(); // Consomme le saut de ligne
 
             switch (choix) {
                 case 1:
@@ -43,7 +39,7 @@ public class Menu2 {
                         Colon colon1 = colonie.getColon(nom1);
                         Colon colon2 = colonie.getColon(nom2);
                         if (colon1 == null || colon2 == null) {
-                            System.out.println("un des colons n'existe pas");
+                            System.out.println("Un des colons n'existe pas");
                             break;
                         }
                         colonie.echangerRessources(colon1, colon2);
@@ -59,16 +55,12 @@ public class Menu2 {
                     colonie.affichageaffection();
                     break;
                 case 3:
-
                     break;
 
                 default:
-                    System.out.println("choix invalide, veuillez réessayer");
+                    System.out.println("Choix invalide, veuillez réessayer");
                     break;
             }
-            scanner1.close();
         } while (choix != 3);
-
     }
 }
-
