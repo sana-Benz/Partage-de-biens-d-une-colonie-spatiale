@@ -72,7 +72,8 @@ public class Menu1 {
 
                 case 2:
                     // Ajouter les préférences d'un colon
-                    System.out.println("Entrez toutes les préférences d'un colon en ordre décroissant (par exemple, A 1 2 3) :");
+                    System.out.println(
+                            "Entrez toutes les préférences d'un colon en ordre décroissant (par exemple, A 1 2 3) :");
                     String input1 = scanner1.nextLine();
                     String[] les_parts = input1.split(" ");
 

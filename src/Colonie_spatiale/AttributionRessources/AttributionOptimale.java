@@ -6,7 +6,7 @@ import java.util.*;
 
 
 public class AttributionOptimale {
-    private List<Colon> colons;
+    private List<Colon> colons; 
     private Map<Ressource, Colon> ressources;
 
     public AttributionOptimale(List<Colon> colons, Map<Ressource, Colon> ressources) {

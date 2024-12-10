@@ -10,11 +10,11 @@ public class Main {
     public static int n; // Déclaration statique pour utilisation globale
 
     public static void main(String[] args) throws ExceptionColon {
-        Scanner scanner = new Scanner(System.in);  // Création du scanner une seule fois
+        Scanner scanner = new Scanner(System.in); // Création du scanner une seule fois
 
-        System.out.println("Entrez la taille de la colonie spatiale");
+        System.out.println("Entrez la taille de la colonie spatiale");// ******************************** */
         n = scanner.nextInt();
-        scanner.nextLine();  // Consomme le saut de ligne après nextInt()
+        scanner.nextLine(); // Consomme le saut de ligne après nextInt()
 
         if (n < 0) {
             System.out.println("La taille de la colonie ne peut pas être négative");
@@ -29,6 +29,6 @@ public class Main {
         Menu2 menu2 = new Menu2(colonie);
         menu2.afficherMenu2(scanner); // Passe le scanner à Menu2 également
 
-        scanner.close();  // Fermeture du scanner ici
+        scanner.close(); // Fermeture du scanner ici
     }
 }

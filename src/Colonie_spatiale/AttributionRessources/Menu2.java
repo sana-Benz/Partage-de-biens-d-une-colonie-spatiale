@@ -2,6 +2,7 @@ package Colonie_spatiale.AttributionRessources;
 
 import Colonie_spatiale.CreationColonie.Colon;
 import Colonie_spatiale.CreationColonie.Colonie;
+import java.util.*;
 
 import java.util.Scanner;
 
@@ -29,7 +30,8 @@ public class Menu2 {
 
             switch (choix) {
                 case 1:
-                    System.out.println("Entrez les deux colons pour lesquels vous voulez échanger les ressources (par exemple, A B) :");
+                    System.out.println(
+                            "Entrez les deux colons pour lesquels vous voulez échanger les ressources (par exemple, A B) :");
                     String input = scanner1.nextLine();
                     String[] parts = input.split(" ");
 
