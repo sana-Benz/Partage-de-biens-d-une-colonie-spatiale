@@ -31,22 +31,22 @@ public class Menu2 {
             switch (choix) {
                 case 1:
                     System.out.println(
-                            "Entrez les deux colons pour lesquels vous voulez échanger les ressources (par exemple, A B) :");
+                            "Entrez les deux colons pour lesquels vous voulez echanger les ressources (par exemple, A B) :");
                     String input = scanner1.nextLine();
                     String[] parts = input.split(" ");
 
                     if (parts.length >= 2) {
                         char nom1 = parts[0].charAt(0);
                         char nom2 = parts[1].charAt(0);
-                        Colon colon1 = colonie.getColon(nom1);
-                        Colon colon2 = colonie.getColon(nom2);
+                        Colon colon1 = colonie.getColon(String.valueOf(nom1));
+                        Colon colon2 = colonie.getColon(String.valueOf(nom2));
                         if (colon1 == null || colon2 == null) {
                             System.out.println("Un des colons n'existe pas");
                             break;
                         }
                         colonie.echangerRessources(colon1, colon2);
                     } else {
-                        System.out.println("Erreur de lecture de colons, veuillez entrer deux caractères.");
+                        System.out.println("Erreur de lecture de colons, veuillez entrer deux caracteres.");
                     }
                     colonie.affichageaffection();
                     break;
@@ -60,7 +60,7 @@ public class Menu2 {
                     break;
 
                 default:
-                    System.out.println("Choix invalide, veuillez réessayer");
+                    System.out.println("Choix invalide, veuillez reessayer");
                     break;
             }
         } while (choix != 3);

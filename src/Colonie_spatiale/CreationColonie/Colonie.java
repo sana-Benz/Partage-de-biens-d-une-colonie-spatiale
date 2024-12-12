@@ -14,29 +14,34 @@ public class Colonie {
 
     public Colonie(int n) throws ExceptionColon {
         if (n > 26) {
-            throw new ExceptionColon("Le nombre de colons ne peut pas dépasser 26.");
+            throw new ExceptionColon("Le nombre de colons ne peut pas depasser 26.");
         }
         this.n = n;
         this.colons = new ArrayList<>();
         this.ressources = new HashMap<>();
-        for (char lettre = 'A'; lettre <= 'Z' && colons.size() < n; lettre++) {
-            Colon c = new Colon(lettre);
-            colons.add(c);
-        }
-        for (int i = 1; i <= n; i++) {
-            Ressource r = new Ressource((char) ('0' + i));
-            ressources.put(r, null);
-        }
+    }
+
+    public void initialiserColons(List<String> nomsColons) {
+        for (String nom : nomsColons) {
+            Colon c = new Colon(nom); colons.add(c); }
+    }
+    public void initialiserRessources(List<String> nomsRessources) {
+        for (String nom : nomsRessources) {
+            Ressource r = new Ressource(nom);
+            ressources.put(r, null); }
     }
 
     public int getn() {
         return n;
     }
 
-    public Colon getColon(char nom) {
+    public void setRessources(Map<Ressource, Colon> ressources) {
+        this.ressources = ressources;
+    }
 
+    public Colon getColon(String nom) {
         for (Colon x : colons) {
-            if (x.getNom() == nom) {
+            if (x.getNom().equals(nom)) {
                 return x;
             }
         }
@@ -45,7 +50,7 @@ public class Colonie {
 
     public void ajoutColon(Colon c) throws ExceptionColon {
         if (colons.size() > n) {
-            throw new ExceptionColon("Le nombre de colons ne peut pas dépasser le nombre donné.");
+            throw new ExceptionColon("Le nombre de colons ne peut pas depasser le nombre donne.");
         }
         colons.add(c);
     }
@@ -64,7 +69,7 @@ public class Colonie {
             for (Ressource p : c.getlistepreferences()) {
                 Ressource ressource = getRessourceParNom(p.getNom());
                 if (ressource != null && ressources.get(ressource) == null) {
-                    c.setRessourceAttribuée(ressource);
+                    c.setRessourceAttribuee(ressource);
                     ressources.put(ressource, c);
                     break;
                 }
@@ -77,11 +82,12 @@ public class Colonie {
 
         for (Colon colon : this.colons) {
             for (Colon ennemi : colon.getEnnemis()) {
-                Ressource ressourceEnnemi = ennemi.getRessourceAttribuée();
+                Ressource ressourceEnnemi = ennemi.getRessourceAttribuee();
 
                 if (colon.prefereObjet(ressourceEnnemi)) { // !ressourceColon.equals(ressourceEnnemi)) {
                     System.out.println("Le colon " + colon.getNom() + " est jaloux de l'ennemi " + ennemi.getNom()
                             + " avec ressource " + ressourceEnnemi);
+                    colon.setJaloux();
                     nombreJaloux++;
 
                 }
@@ -91,9 +97,9 @@ public class Colonie {
         return nombreJaloux;
     }
 
-    public Ressource getRessourceParNom(char nom) {
+    public Ressource getRessourceParNom(String nom) {
         for (Ressource r : ressources.keySet()) {
-            if (r.getNom() == nom) {
+            if (r.getNom().equals(nom)) {
                 return r;
             }
         }
@@ -113,14 +119,14 @@ public class Colonie {
 
     public void echangerRessources(Colon colon1, Colon colon2) {
 
-        Ressource ressource1 = colon1.getRessourceAttribuée();
-        Ressource ressource2 = colon2.getRessourceAttribuée();
+        Ressource ressource1 = colon1.getRessourceAttribuee();
+        Ressource ressource2 = colon2.getRessourceAttribuee();
 
         if (ressource1 != null && ressource2 != null) {
 
-            colon1.setRessourceAttribuée(ressource2);
+            colon1.setRessourceAttribuee(ressource2);
 
-            colon2.setRessourceAttribuée(ressource1);
+            colon2.setRessourceAttribuee(ressource1);
 
             // Met à jour le dictionnaire de ressources
 
@@ -130,7 +136,7 @@ public class Colonie {
 
         } else {
 
-            System.out.println("L'un des colons n'a pas de ressource attribuée, impossible d'échanger.");
+            System.out.println("L'un des colons n'a pas de ressource attribuee, impossible d'echanger.");
 
         }
 
