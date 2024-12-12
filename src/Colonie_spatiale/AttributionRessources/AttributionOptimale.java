@@ -45,7 +45,7 @@ public class AttributionOptimale {
 
             // Affecter la meilleure ressource trouvée au colon
             if (meilleureRessource != null) {
-                colon.setRessourceAttribuée(meilleureRessource);
+                colon.setRessourceAttribuee(meilleureRessource);
                 ressources.put(meilleureRessource, colon);
             }
         }
