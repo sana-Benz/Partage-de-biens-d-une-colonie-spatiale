@@ -6,7 +6,7 @@ import java.util.*;
 
 
 public class AttributionOptimale {
-    private List<Colon> colons;
+    private List<Colon> colons; 
     private Map<Ressource, Colon> ressources;
 
     public AttributionOptimale(List<Colon> colons, Map<Ressource, Colon> ressources) {
@@ -45,7 +45,7 @@ public class AttributionOptimale {
 
             // Affecter la meilleure ressource trouvée au colon
             if (meilleureRessource != null) {
-                colon.setRessourceAttribuée(meilleureRessource);
+                colon.setRessourceAttribuee(meilleureRessource);
                 ressources.put(meilleureRessource, colon);
             }
         }

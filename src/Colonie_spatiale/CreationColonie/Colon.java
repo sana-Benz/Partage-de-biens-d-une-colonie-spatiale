@@ -3,71 +3,81 @@ package Colonie_spatiale.CreationColonie;
 import java.util.*;
 
 public class Colon {
-    private char nom;
-    private ArrayList <Ressource> preferences;
-    private ArrayList <Colon> ennemis;
-    private Ressource ressourceAttribuee ;
+    private String nom;
+    private ArrayList<Ressource> preferences;
+    private ArrayList<Colon> ennemis;
+    private Ressource ressourceAttribuee;
 
-    public Colon(char nom) {
+    private boolean jaloux;
+
+    public Colon(String nom) {
         this.nom = nom;
         this.preferences = new ArrayList<>();
         this.ennemis = new ArrayList<>();
-        this.ressourceAttribuee=null;
+        this.ressourceAttribuee = null;
+        this.jaloux = false;
     }
 
-    public char getNom() {
+    public String getNom() {
         return nom;
     }
+
+    public void setJaloux() {
+        this.jaloux = true;
+    }
+
     public void ajoutennemi(Colon c) {
-            ennemis.add(c); 
-        } 
-    public void ajoutpreference(Ressource p){
+        ennemis.add(c);
+    }
+
+    public void ajoutpreference(Ressource p) {
         preferences.add(p);
 
     }
-    public ArrayList<Ressource> getlistepreferences(){
+
+    public ArrayList<Ressource> getlistepreferences() {
         return preferences;
     }
 
-    public void AfficherListePref(){
-        System.out.println("préference du colon"+nom+": "+this.preferences);
+    public void AfficherListePref() {
+        System.out.println("preference du colon" + nom + ": " + this.preferences);
     }
 
-    public void setRessourceAttribuée(Ressource r){
+    public void setRessourceAttribuee(Ressource r) {
         ressourceAttribuee = r;
     }
-    public Ressource getRessourceAttribuée(){
+
+    public Ressource getRessourceAttribuee() {
         return ressourceAttribuee;
     }
 
-    public ArrayList<Colon> getEnnemis(){
+    public ArrayList<Colon> getEnnemis() {
         return ennemis;
     }
 
-    /*public boolean prefereObjet(Ressource ressource) {
-        // Comparaison des ressources en fonction de leur ordre de préférence
-        boolean result= this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuée);
-        System.out.println("Le colon préfère " + ressource + " ? " + result);
-        return result;
-    }*/
+
     public boolean prefereObjet(Ressource ressource) {
         if (this.ressourceAttribuee == null || ressource == null) {
-            System.out.println("Erreur : ressourceAttribuée ou ressource est null");
+            System.out.println("Erreur : ressourceAttribuee ou ressource est null");
             return false;
         }
         if (!this.preferences.contains(ressource)) {
-            System.out.println("Erreur : la ressource " + ressource + " n'est pas trouvée dans les préférences de " + nom);
-            System.out.println("préference du colon"+nom+": "+this.preferences);
+            System.out.println(
+                    "Erreur : la ressource " + ressource + " n'est pas trouvee dans les preferences de " + nom);
+            System.out.println("preference du colon" + nom + ": " + this.preferences);
             return false;
         }
         if (!this.preferences.contains(this.ressourceAttribuee)) {
-            System.out.println("Erreur : la ressource attribuée " + this.ressourceAttribuee + " n'est pas trouvée dans les préférences de " + nom);
+            System.out.println("Erreur : la ressource attribuee " + this.ressourceAttribuee
+                    + " n'est pas trouvee dans les preferences de " + nom);
             return false;
         }
         boolean result = this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuee);
-        System.out.println("Le colon " + nom + " préfère " + ressource + " à " + this.ressourceAttribuee + " ? " + result);
+        System.out.println(
+                "Le colon " + nom + " prefere " + ressource + " a " + this.ressourceAttribuee + " ? " + result);
         return result;
     }
+
 
 
 }
