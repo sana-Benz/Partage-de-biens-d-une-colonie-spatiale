@@ -1,0 +1,8 @@
+/** pour exécuter depuis la ligne de commande
+
+1) se placer dans src:  cd ...\PROJET_JAVA\src
+
+2) javac Colonie_spatiale\*.java Colonie_spatiale\CreationColonie\*.java Colonie_spatiale\AttributionRessources\*.java
+
+
+3) java -cp . Colonie_spatiale.Main D:\TPS\PROJET_JAVA\src\colonie.txt
