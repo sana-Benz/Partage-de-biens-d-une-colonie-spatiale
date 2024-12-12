@@ -2,6 +2,8 @@ package Colonie_spatiale.AttributionRessources;
 
 import Colonie_spatiale.CreationColonie.Colon;
 import Colonie_spatiale.CreationColonie.Colonie;
+import Colonie_spatiale.InvalidInputTypeException;
+
 import java.util.*;
 
 import java.util.Scanner;
@@ -24,10 +26,22 @@ public class Menu2 {
             System.out.println("1 Echanger les ressources de deux colons");
             System.out.println("2 Afficher le nombre de colons jaloux ");
             System.out.println("3 Fin ");
+<<<<<<< HEAD
+            
+           // choix = scanner1.nextInt();
+            //scanner1.nextLine(); // Consomme le saut de ligne
+            try {
+                choix = Integer.parseInt(scanner1.nextLine()); // Utiliser nextLine et parser
+            } catch (NumberFormatException e) {
+                System.out.println("L'entrée doit être un entier. Veuillez réessayer.");
+                continue; // Recommencer la boucle
+            }
+=======
 
             choix = scanner1.nextInt();
             scanner1.nextLine(); // Consomme le saut de ligne
 
+>>>>>>> 9e9431c18e9be6ed7e37f59b009bb2f918c3d929
             switch (choix) {
                 case 1:
                     System.out.println(

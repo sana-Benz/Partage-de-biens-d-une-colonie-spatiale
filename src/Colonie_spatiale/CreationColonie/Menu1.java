@@ -51,9 +51,15 @@ public class Menu1 {
             System.out.println("2. Ajouter les preferences d'un colon");
             System.out.println("3. Fin");
 
-            // Lecture du choix de l'utilisateur
+            /*// Lecture du choix de l'utilisateur
             choix = scanner1.nextInt();
-            scanner1.nextLine(); // Consomme le saut de ligne
+            scanner1.nextLine(); // Consomme le saut de ligne  */
+            try {
+                choix = Integer.parseInt(scanner1.nextLine()); // Utiliser nextLine et parser
+            } catch (NumberFormatException e) {
+                System.out.println("L'entrée doit être un entier. Veuillez réessayer.");
+                continue; // Recommencer la boucle
+            }
 
             switch (choix) {
                 case 1:
