@@ -110,8 +110,14 @@ public class FichierColonie {
     }
 
 
+    public static void saveAttribution() throws ExceptionColon, IOException {
+
+        System.out.println("en train de faire savestate");
+
+
+    }
 
 
 
 
-}
+    }
