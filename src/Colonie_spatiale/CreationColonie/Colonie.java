@@ -2,10 +2,9 @@ package Colonie_spatiale.CreationColonie;
 
 import Colonie_spatiale.ExceptionColon;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Colonie {
     public int n;
@@ -34,6 +33,11 @@ public class Colonie {
     public int getn() {
         return n;
     }
+
+    public List<Colon> getListeColons (){
+        return colons;
+    }
+
 
     public void setRessources(Map<Ressource, Colon> ressources) {
         this.ressources = ressources;
@@ -107,15 +111,19 @@ public class Colonie {
     }
 
     public void affichageaffection() {
-        for (Map.Entry<Ressource, Colon> entry : ressources.entrySet()) {
+        trierColonsParNom(); // Trier les colons par nom
 
-            if (entry.getValue() != null) { // Vérifie si la valeur n'est pas null
+        for (Colon colon : colons) {
+            Ressource ressource = colon.getRessourceAttribuee(); // Obtenir la ressource attribuée au colon
 
-                System.out.println(entry.getValue().getNom() + " : " + entry.getKey().getNom());
+            if (ressource != null) { // Vérifie si la ressource est attribuée
+                System.out.println(colon.getNom() + " : " + ressource.getNom());
+            } else {
+                System.out.println(colon.getNom() + " : aucune ressource attribuée");
             }
-
         }
     }
+
 
     public void echangerRessources(Colon colon1, Colon colon2) {
 
@@ -141,5 +149,34 @@ public class Colonie {
         }
 
     }
+
+    public void trierColonsParNom() {
+        colons.sort(Comparator.comparing(colon -> colon.getNom(), (s1, s2) -> {
+            // Comparateur pour trier naturellement les noms
+            Pattern pattern = Pattern.compile("\\d+");
+            Matcher m1 = pattern.matcher(s1);
+            Matcher m2 = pattern.matcher(s2);
+
+            int pos1 = 0, pos2 = 0;
+
+            while (m1.find(pos1) && m2.find(pos2)) {
+                // Comparaison des parties non numériques
+                int compareText = s1.substring(pos1, m1.start()).compareTo(s2.substring(pos2, m2.start()));
+                if (compareText != 0) return compareText;
+
+                // Comparaison des parties numériques
+                int num1 = Integer.parseInt(m1.group());
+                int num2 = Integer.parseInt(m2.group());
+                if (num1 != num2) return Integer.compare(num1, num2);
+
+                // Avance aux positions suivantes
+                pos1 = m1.end();
+                pos2 = m2.end();
+            }
+            // Comparaison des parties restantes
+            return s1.substring(pos1).compareTo(s2.substring(pos2));
+        }));
+    }
+
 
 }
