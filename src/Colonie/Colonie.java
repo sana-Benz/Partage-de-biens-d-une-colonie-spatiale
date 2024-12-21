@@ -143,19 +143,7 @@ public class Colonie {
         return null;
     }
 
-    public void affichageaffection() {
-        trierColonsParNom(); // Trier les colons par nom
 
-        for (Colon colon : colons) {
-            Ressource ressource = colon.getRessourceAttribuee(); // Obtenir la ressource attribuée au colon
-
-            if (ressource != null) { // Vérifie si la ressource est attribuée
-                System.out.println(colon.getNom() + " : " + ressource.getNom());
-            } else {
-                System.out.println(colon.getNom() + " : aucune ressource attribuee");
-            }
-        }
-    }
 
 
     public void echangerRessources(Colon colon1, Colon colon2) {

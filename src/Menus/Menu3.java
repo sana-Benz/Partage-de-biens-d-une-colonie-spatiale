@@ -1,5 +1,6 @@
 package Menus;
 
+import Affichages.RecapColonie;
 import Colonie.Colon;
 import Colonie.Colonie;
 import DataAccess.FichierColonie;
@@ -23,14 +24,16 @@ public class Menu3 {
     }
 
     public void afficherMenu3(Scanner scanner1) {
+        RecapColonie affichage = new RecapColonie(colonie);
 
         do{
             // Affiche le 3ème menu
-            System.out.println("Veuillez entrer votre choix pour le deuxieme menu");
+            System.out.println("Veuillez entrer votre choix ");
             System.out.println("1 Resolution automatique");
             System.out.println("2 Sauvegarde de la solution actuelle ");
             System.out.println("3 Fin ");
 
+            System.out.print("Votre choix : ");
             choix = scanner1.nextInt();
             scanner1.nextLine(); // Consomme le saut de ligne
 
@@ -43,15 +46,15 @@ public class Menu3 {
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                    System.out.println("l'attribution optimale a ete effectuee");
-                    colonie.affichageaffection();
+                    //System.out.println("l'attribution optimale a ete effectuee");
+                    affichage.affichageaffection();
                     break;
                 case 2:
                     try {
                         System.out.println("\nVeuillez entrer le nom du fichier pour sauvegarder les affectations :");
                         System.out.println("Vous trouverez le fichier dans le repertoire courant ");
                         String nomFichier = scanner1.nextLine().trim();
-                        FichierColonie.saveAttribution(nomFichier,colonie);
+                        FichierColonie.saveAttribution(nomFichier,colonie,scanner1);
                     } catch (Exception e) {
                         System.out.println("Erreur inattendue : " + e.getMessage());
                     }

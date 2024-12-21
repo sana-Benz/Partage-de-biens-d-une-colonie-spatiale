@@ -18,16 +18,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in); // Création du scanner une seule fois
         Colonie colonie = null;
 
+
         // Vérifier si un fichier est passé en argument
         if (args.length > 0) {
             String cheminFichier = args[0];
-            System.out.println("Chargement des données depuis le fichier : " + cheminFichier);
+            System.out.println("Chargement des donnees depuis le fichier : " + cheminFichier);
 
             try {
                 colonie = FichierColonie.chargerDepuisFichier(cheminFichier, n);
-                System.out.println("Colonie chargée depuis le fichier !");
+                System.out.println("Colonie chargee depuis le fichier !");
             } catch (IOException e) {
-                System.err.println("Erreur d'entrée/sortie : " + e.getMessage());
+                System.err.println("Erreur d'entree/sortie : " + e.getMessage());
                 scanner.close(); // Fermer le scanner avant de quitter
                 return;
             } catch (ExceptionColon e) {
@@ -35,6 +36,8 @@ public class Main {
                 scanner.close(); // Fermer le scanner avant de quitter
                 return;
             }
+            RecapColonie affichage1 = new RecapColonie(colonie);
+            affichage1.afficherEtatColonie();
 
             // Si la colonie est chargée, afficher le menu 3
             Menu3 menu3 = new Menu3(colonie);
@@ -48,7 +51,7 @@ public class Main {
             scanner.nextLine(); // Consomme le saut de ligne après nextInt()
 
             if (n < 0) {
-                System.out.println("La taille de la colonie ne peut pas être négative.");
+                System.out.println("La taille de la colonie ne peut pas etre negative.");
                 scanner.close(); // Fermer le scanner avant de quitter
                 return;
             }
@@ -58,15 +61,14 @@ public class Main {
 
             colonie = menu1.getColonie();
             if (colonie == null) {
-                System.out.println("Erreur : La colonie n'a pas été correctement initialisée.");
+                System.out.println("Erreur : La colonie n'a pas ete correctement initialisee.");
                 scanner.close(); // Fermer le scanner avant de quitter
                 return;
             }
 
             // Afficher le récap de la colonie avant le menu 2
-            System.out.println("\n=== Récapitulatif de l'état de la colonie ===");
-            RecapColonie recap = new RecapColonie(colonie);
-            recap.afficherEtatColonie();
+            RecapColonie affichage2 = new RecapColonie(colonie);
+            affichage2.afficherEtatColonie();
 
             Menu2 menu2 = new Menu2(colonie);
             menu2.afficherMenu2(scanner);
