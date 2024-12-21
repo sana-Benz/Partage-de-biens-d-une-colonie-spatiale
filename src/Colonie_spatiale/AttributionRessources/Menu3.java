@@ -7,6 +7,7 @@ import Colonie_spatiale.CreationColonie.Ressource;
 import Colonie_spatiale.ExceptionColon;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ public class Menu3 {
     private int choix;
     private Colonie colonie; // Référence à la colonie
     Map<Ressource, Colon> ressources;
+
 
     public Menu3(Colonie colonie) {
         this.colonie = colonie; // Réutilisation de l'instance
@@ -33,7 +35,7 @@ public class Menu3 {
 
             switch (choix) {
                 case 1:
-                    AttributionOptimale attributionOpt = new AttributionOptimale(colonie.getListeColons() , ressources);
+                    AttributionOptimale attributionOpt = new AttributionOptimale(colonie,colonie.getListeColons() , ressources);
                     System.out.println("l'attribution optimale a été effectuée");
                     colonie.affichageaffection();
                 case 2:

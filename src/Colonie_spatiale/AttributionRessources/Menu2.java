@@ -2,11 +2,10 @@ package Colonie_spatiale.AttributionRessources;
 
 import Colonie_spatiale.CreationColonie.Colon;
 import Colonie_spatiale.CreationColonie.Colonie;
+import Colonie_spatiale.CreationColonie.Ressource;
 import Colonie_spatiale.InvalidInputTypeException;
 
 import java.util.*;
-
-import java.util.Scanner;
 
 public class Menu2 {
     private int choix;
@@ -17,9 +16,18 @@ public class Menu2 {
         this.colonie = colonie; // Réutilisation de l'instance
     }
 
-    public void afficherMenu2(Scanner scanner1) {
+    public void afficherMenu2(Scanner scanner1) throws Exception {
         colonie.affectationNaive();
-        colonie.affectationOptimisee(); // Remplace affectationNaive par attributionOptimale
+        //colonie.affectationOptimisee(); // Remplace affectationNaive par attributionOptimale
+        // Appel de l'attribution optimisée mta el tfol
+        List<Ressource> ressources = colonie.getRessources().keySet().stream().toList(); // Exemple pour obtenir les ressources
+
+        // Créez une instance d'AttributionOptimale avec la colonie unique
+        AttributionOptimale attributionOpt = new AttributionOptimale(colonie, colonie.getListeColons(), colonie.getRessources());
+
+        // Appel de la méthode d'attribution optimisée
+        int coutJaloux = attributionOpt.affectationOptimisee(ressources);
+        System.out.println("Coût de jalousie après attribution optimisée : " + coutJaloux);
 
 
         do {

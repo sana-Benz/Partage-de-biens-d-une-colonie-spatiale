@@ -1,24 +1,17 @@
 package Colonie_spatiale;
 
 import Colonie_spatiale.AttributionRessources.Menu2;
-import Colonie_spatiale.CreationColonie.Colon;
 import Colonie_spatiale.CreationColonie.Colonie;
 import Colonie_spatiale.CreationColonie.FichierColonie;
 import Colonie_spatiale.CreationColonie.Menu1;
-import Colonie_spatiale.CreationColonie.Ressource;
-import Colonie_spatiale.InvalidInputTypeException;
-import Colonie_spatiale.AttributionRessources.AttributionOptimale;
-
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static int n=0; // Déclaration statique pour utilisation globale
 
-    public static void main(String[] args) throws ExceptionColon {
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in); // Création du scanner une seule fois
 
         Colonie colonie = null;
@@ -60,16 +53,9 @@ public class Main {
 
          //afficher le recap de colonie avant le menu 2
         System.out.println("\n=== Recapitulatif de l'etat de la colonie ===");
-        //RecapColonie recap = new RecapColonie(colonie);
-        //recap.afficherEtatColonie();
+        RecapColonie recap = new RecapColonie(colonie);
+        recap.afficherEtatColonie();
 
-        // Exécuter l'algorithme d'attribution optimale
-        //List<Colon> colons = colonie.getlistecolons(); // Assurez-vous que cette méthode existe
-        //Map<Ressource, Colon> ressources = colonie.getRessources(); // Assurez-vous que cette méthode existe
-
-        //AttributionOptimale attribution = new AttributionOptimale(colons, ressources);
-        //attribution.affectationOptimisee(); // Appel de la méthode pour effectuer l'attribution
-        //attribution.afficherAffectations(); // Afficher les affectations
 
         Menu2 menu2 = new Menu2(colonie);
         menu2.afficherMenu2(scanner); // Passe le scanner à Menu2 également

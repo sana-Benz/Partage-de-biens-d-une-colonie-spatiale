@@ -80,7 +80,9 @@ public class Colonie {
             }
         }
     }
-    public void affectationOptimisee() {
+
+    //Cette affectation optimisee retourne la meme chose que laffectation naive
+    /*public void affectationOptimisee() { 
         // Étape 1 : Trier les colons par ordre décroissant du nombre d'ennemis
         List<Colon> colonsTries = new ArrayList<>(colons);
         colonsTries.sort((a, b) -> b.getEnnemis().size() - a.getEnnemis().size());
@@ -115,7 +117,8 @@ public class Colonie {
                 ressources.put(meilleureRessource, colon);
             }
         }
-    }
+    }*/
+    
 
     public int nombreColonsJaloux() {
         int nombreJaloux = 0;
