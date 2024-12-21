@@ -1,18 +1,17 @@
 package Service;
-import Colonie.Colon;
-import Colonie.Ressource;
+import Colonie.*;
 
 import java.util.*;
 
 
 public class AttributionOptimale {
     private List<Colon> colons; 
-    private Map<Ressource, Colon> ressources;
+    private Map<Ressource, Colon> mapRessources;
     private Colonie colonies; // Une seule colonie
 
     public AttributionOptimale( Colonie colonies,List<Colon> colons, Map<Ressource, Colon> ressources) {
         this.colons = colons;
-        this.ressources = ressources;
+        this.mapRessources = ressources;
         this.colonies = colonies; // Version mtaa el tfol
 
     }
@@ -111,8 +110,10 @@ public int affectationOptimisee ( List<Ressource> ressources) throws Exception {
         }
         
         // 1. Combinaison des deux algos Effectuer l'affectation naïve pour letat initial
-        colonies.affectationNaive(); // Appel de la méthode d'affectation naïve
-
+        //colonies.affectationNaive(); // Appel de la méthode d'affectation naïve
+        AttributionNaive attNaive = new AttributionNaive(colons,mapRessources,colonies);
+        attNaive.affectationNaive();
+        System.out.println("g fait latt naive");
 
         // 1. Créer une copie du graphe des relations et des préférences pour manipulation
         List<Colon> colonsTries = new ArrayList<>(colonies.getListeColons());

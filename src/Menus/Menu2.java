@@ -1,7 +1,9 @@
 package Menus;
 
 import Colonie.*;
+import Service.AttributionOptimale;
 
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -25,7 +27,7 @@ public class Menu2 {
 
         // Appel de la méthode d'attribution optimisée
         int coutJaloux = attributionOpt.affectationOptimisee(ressources);
-        System.out.println("Coût de jalousie après attribution optimisée : " + coutJaloux);
+        //System.out.println("Coût de jalousie après attribution optimisée : " + coutJaloux);
 
 
         do {

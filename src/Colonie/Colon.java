@@ -73,8 +73,6 @@ public class Colon {
             return false;
         }
         boolean result = this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuee);
-        System.out.println(
-                "Le colon " + nom + " prefere " + ressource + " a " + this.ressourceAttribuee + " ? " + result);
         return result;
     }
     @Override

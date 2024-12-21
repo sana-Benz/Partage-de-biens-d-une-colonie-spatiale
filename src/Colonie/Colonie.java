@@ -41,6 +41,13 @@ public class Colonie {
         return colons;
     }
 
+    public List<Ressource> getListeRessources(){
+        List<Ressource> keysList = new ArrayList<>();
+        for (Ressource key : ressources.keySet()) {
+            keysList.add(key);
+        }
+        return keysList;
+    }
 
     public void setRessources(Map<Ressource, Colon> ressources) {
         this.ressources = ressources;
@@ -71,19 +78,7 @@ public class Colonie {
         return ressources;
     }
 
-    // solution naive
-    public void affectationNaive() {
-        for (Colon c : colons) {
-            for (Ressource p : c.getlistepreferences()) {
-                Ressource ressource = getRessourceParNom(p.getNom());
-                if (ressource != null && ressources.get(ressource) == null) {
-                    c.setRessourceAttribuee(ressource);
-                    ressources.put(ressource, c);
-                    break;
-                }
-            }
-        }
-    }
+
 
     //Cette affectation optimisee retourne la meme chose que laffectation naive
     /*public void affectationOptimisee() { 
@@ -131,9 +126,7 @@ public class Colonie {
             for (Colon ennemi : colon.getEnnemis()) {
                 Ressource ressourceEnnemi = ennemi.getRessourceAttribuee();
 
-                if (colon.prefereObjet(ressourceEnnemi)) { // !ressourceColon.equals(ressourceEnnemi)) {
-                    System.out.println("Le colon " + colon.getNom() + " est jaloux de l'ennemi " + ennemi.getNom()
-                            + " avec ressource " + ressourceEnnemi);
+                if (colon.prefereObjet(ressourceEnnemi)) {
                     colon.setJaloux();
                     nombreJaloux++;
 
