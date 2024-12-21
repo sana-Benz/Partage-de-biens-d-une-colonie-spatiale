@@ -113,7 +113,6 @@ public int affectationOptimisee ( List<Ressource> ressources) throws Exception {
         //colonies.affectationNaive(); // Appel de la méthode d'affectation naïve
         AttributionNaive attNaive = new AttributionNaive(colons,mapRessources,colonies);
         attNaive.affectationNaive();
-        System.out.println("g fait latt naive");
 
         // 1. Créer une copie du graphe des relations et des préférences pour manipulation
         List<Colon> colonsTries = new ArrayList<>(colonies.getListeColons());
