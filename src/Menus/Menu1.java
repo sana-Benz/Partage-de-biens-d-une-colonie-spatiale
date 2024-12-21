@@ -67,10 +67,11 @@ public class Menu1 {
             } else {
                 nomsValides = true; // Les noms sont valides
             }
+
         }
 
         colonie.initialiserColons(nomsColons); // Appelez la méthode pour initialiser les colons
-        System.out.println("Après l'initialisation des colons : " + colonie.getlistecolons());
+        //System.out.println("Apres l'initialisation des colons : " + colonie.getlistecolons());
 
         List<String> nomsRessources = new ArrayList<>();
         boolean ressourcesValides = false;
@@ -106,6 +107,19 @@ public class Menu1 {
                 ressourcesValides = true; // Les ressources sont valides
             }
         }
+
+        // Initialiser les colons
+        //List<String> nomsColons = new ArrayList<>();
+        //for (int i = 0; i < n; i++) { nomsColons.add("Colon" + i); }
+        //colonie.initialiserColons(nomsColons);
+        // Initialiser les ressources
+       //VERSION DE SANA
+     /*  List<String> nomsRessources = new ArrayList<>();
+        System.out.println("Veuillez entrer les noms des " + n + " ressources :");
+        for (int i = 1; i <= n; i++) {
+            System.out.println("Ressource " + (i ) + " :");
+            String nom = scanner1.nextLine().trim(); // Lit et nettoie le nom
+            nomsRessources.add(nom);}*/
         colonie.initialiserRessources(nomsRessources);
 
         boolean incomplet = true;
@@ -122,9 +136,10 @@ public class Menu1 {
             choix = scanner1.nextInt();
             scanner1.nextLine(); // Consomme le saut de ligne  */
             try {
+                System.out.print("Votre choix : ");
                 choix = Integer.parseInt(scanner1.nextLine()); // Utiliser nextLine et parser
             } catch (NumberFormatException e) {
-                System.out.println("L'entrée doit être un entier. Veuillez réessayer.");
+                System.out.println("L'entree doit etre un entier. Veuillez reessayer.");
                 continue; // Recommencer la boucle
             }
 
