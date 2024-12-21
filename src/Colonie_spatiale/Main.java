@@ -46,12 +46,15 @@ public class Main {
             }
 
             Menu1 menu1 = new Menu1(n);
-            menu1.afficherMenu1(scanner); // Passe le scanner à Menu1 pour éviter d'en créer un nouveau
-
-            colonie = menu1.getColonie();
+            menu1.afficherMenu1();
+            colonie=menu1.getColonie();
+            if (colonie == null) {
+                System.out.println("Erreur : La colonie n'a pas été correctement initialisée.");
+                return;
+            }
         }
 
-         //afficher le recap de colonie avant le menu 2
+        //afficher le recap de colonie avant le menu 2
         System.out.println("\n=== Recapitulatif de l'etat de la colonie ===");
         RecapColonie recap = new RecapColonie(colonie);
         recap.afficherEtatColonie();

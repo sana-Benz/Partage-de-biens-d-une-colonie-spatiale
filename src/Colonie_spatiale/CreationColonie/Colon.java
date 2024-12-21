@@ -77,7 +77,10 @@ public class Colon {
                 "Le colon " + nom + " prefere " + ressource + " a " + this.ressourceAttribuee + " ? " + result);
         return result;
     }
-
+    @Override
+    public String toString() {
+        return nom; // Retourne uniquement le nom du colon
+    }
 
 
 }

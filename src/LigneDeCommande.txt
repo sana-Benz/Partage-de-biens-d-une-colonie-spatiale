@@ -5,4 +5,4 @@
 2) javac Colonie_spatiale\*.java Colonie_spatiale\CreationColonie\*.java Colonie_spatiale\AttributionRessources\*.java
 
 
-3) java -cp . Colonie_spatiale.Main D:\TPS\PROJET_JAVA\src\colonie.txt
+3) java -cp . Colonie_spatiale.Main C:\Users\fenni\Desktop\Partage-de-biens-d-une-colonie-spatiale\src\colonie.txt

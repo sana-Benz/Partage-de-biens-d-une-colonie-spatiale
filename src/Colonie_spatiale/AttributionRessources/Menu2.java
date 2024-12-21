@@ -25,8 +25,30 @@ public class Menu2 {
             System.out.println("2 Afficher le nombre de colons jaloux ");
             System.out.println("3 Fin ");
 
-            choix = scanner1.nextInt();
-            scanner1.nextLine(); // Consomme le saut de ligne
+            /*if (scanner1.hasNextInt()) {
+                choix = scanner1.nextInt();
+                scanner1.nextLine(); // Consomme le saut de ligne
+            } else {
+                System.out.println("Erreur : Veuillez entrer un numéro valide.");
+                scanner1.nextLine(); // Vide la ligne incorrecte
+                continue;
+            }*/
+            try {
+                System.out.print("Votre choix : ");
+                String input = scanner1.nextLine().trim(); // Lit l'entrée utilisateur
+
+                if (!input.matches("\\d+")) { // Vérifie si l'entrée est un entier
+                    System.out.println("Erreur : Veuillez entrer un numéro valide.");
+                    continue;
+                }
+
+                choix = Integer.parseInt(input); // Convertit en entier
+            } catch (Exception e) {
+                System.out.println("Erreur inattendue : " + e.getMessage());
+                break;
+            }
+
+
 
             switch (choix) {
                 case 1:
@@ -36,10 +58,11 @@ public class Menu2 {
                     String[] parts = input.split(" ");
 
                     if (parts.length >= 2) {
-                        char nom1 = parts[0].charAt(0);
-                        char nom2 = parts[1].charAt(0);
-                        Colon colon1 = colonie.getColon(String.valueOf(nom1));
-                        Colon colon2 = colonie.getColon(String.valueOf(nom2));
+                        String nom1 = parts[0];
+                        String nom2 = parts[1];
+                        Colon colon1 = colonie.getColon(nom1);
+                        Colon colon2 = colonie.getColon(nom2);
+
                         if (colon1 == null || colon2 == null) {
                             System.out.println("Un des colons n'existe pas");
                             break;
