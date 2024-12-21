@@ -44,16 +44,23 @@ public class Main {
             menu3.afficherMenu3(scanner);
 
         } else {
-            // Aucune argument fourni, exécuter les menus 1 et 2
+             // Aucune argument fourni, exécuter les menus 1 et 2
             System.out.println("Aucun fichier fourni. Construction manuelle de la colonie.");
-            System.out.println("Entrez la taille de la colonie spatiale :");
-            n = scanner.nextInt();
-            scanner.nextLine(); // Consomme le saut de ligne après nextInt()
+            // Demande de la taille de la colonie jusqu'à ce qu'une valeur valide soit fournie
+            boolean tailleValide = false;
+            while (!tailleValide) {
+                System.out.println("Entrez la taille de la colonie spatiale (doit être un entier positif) :");
+                try {
+                    n = Integer.parseInt(scanner.nextLine());
+                    if (n > 0) {
+                        tailleValide = true; // La taille est valide
+                    } else {
+                        System.out.println("Erreur : La taille de la colonie doit être un entier positif. Veuillez réessayer.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Erreur : Veuillez entrer un nombre entier valide.");
+                }
 
-            if (n < 0) {
-                System.out.println("La taille de la colonie ne peut pas etre negative.");
-                scanner.close(); // Fermer le scanner avant de quitter
-                return;
             }
 
             Menu1 menu1 = new Menu1(n);
