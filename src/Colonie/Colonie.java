@@ -22,12 +22,15 @@ public class Colonie {
 
     public void initialiserColons(List<String> nomsColons) {
         for (String nom : nomsColons) {
-            Colon c = new Colon(nom); colons.add(c); }
+             colons.add(new Colon(nom)); }
+        System.out.println("Colons initialisés : " + colons.toString());
     }
     public void initialiserRessources(List<String> nomsRessources) {
         for (String nom : nomsRessources) {
             Ressource r = new Ressource(nom);
             ressources.put(r, null); }
+        // Afficher les colons pour vérification
+        System.out.println("Colons initialisés : " + colons);
     }
 
     public int getn() {
@@ -51,6 +54,7 @@ public class Colonie {
         }
         return null;
     }
+
 
     public void ajoutColon(Colon c) throws ExceptionColon {
         if (colons.size() > n) {
@@ -177,6 +181,5 @@ public class Colonie {
             return s1.substring(pos1).compareTo(s2.substring(pos2));
         }));
     }
-
 
 }
