@@ -24,7 +24,7 @@ public class Menu1 {
         return colonie;
     }
 
-    public void afficherMenu1() {
+    public void afficherMenu1(Scanner scanner1) {
 
         // Initialisation de la colonie avec ordre A B C D
         /*System.out.println("Avant l'initialisation des colons");
@@ -39,7 +39,7 @@ public class Menu1 {
             return; // Stoppe l'exécution si la colonie ne peut pas être créée
         }
         //initialisation sans ordre
-        Scanner scanner1 = new Scanner(System.in);
+        //Scanner scanner1 = new Scanner(System.in);
         List<String> nomsColons = new ArrayList<>();
 
         System.out.println("Veuillez entrer les noms des " + n + " colons (séparés par des espaces ou sur plusieurs lignes) :");
@@ -60,7 +60,10 @@ public class Menu1 {
         //colonie.initialiserColons(nomsColons);
         // Initialiser les ressources
         List<String> nomsRessources = new ArrayList<>();
-        for (int i = 1; i <= n; i++) { nomsRessources.add("Ressource" + i); }
+        for (int i = 1; i <= n; i++) {
+            System.out.println("Ressource " + (i ) + " :");
+            String nom = scanner1.nextLine().trim(); // Lit et nettoie le nom
+            nomsRessources.add(nom);}
         colonie.initialiserRessources(nomsRessources);
 
         boolean incomplet = true;
@@ -149,6 +152,6 @@ public class Menu1 {
             }
         } while (choix != 3 || incomplet);
         // Fermer le scanner
-        scanner1.close();
+        //scanner1.close();
     }
 }

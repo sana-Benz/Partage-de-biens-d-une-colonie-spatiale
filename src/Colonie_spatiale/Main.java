@@ -46,7 +46,7 @@ public class Main {
             }
 
             Menu1 menu1 = new Menu1(n);
-            menu1.afficherMenu1();
+            menu1.afficherMenu1(scanner);
             colonie=menu1.getColonie();
             if (colonie == null) {
                 System.out.println("Erreur : La colonie n'a pas été correctement initialisée.");

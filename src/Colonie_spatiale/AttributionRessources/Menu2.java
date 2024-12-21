@@ -17,7 +17,6 @@ public class Menu2 {
 
     public void afficherMenu2(Scanner scanner1) {
         colonie.affectationNaive();
-
         do {
             // Affiche le 2ème menu
             System.out.println("Veuillez entrer votre choix pour le deuxieme menu");
