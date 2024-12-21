@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Main {
     public static int n=0; // Déclaration statique pour utilisation globale
 
-    public static void main(String[] args) throws ExceptionColon {
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in); // Création du scanner une seule fois
 
         Colonie colonie = null;
@@ -51,9 +51,10 @@ public class Main {
             menu1.afficherMenu1(scanner);
             colonie=menu1.getColonie();
             if (colonie == null) {
-                System.out.println("Erreur : La colonie n'a pas été correctement initialisée.");
+                System.out.println("Erreur : La colonie n'a pas ete correctement initialisee.");
                 return;
             }
+
         }
 
         //afficher le recap de colonie avant le menu 2

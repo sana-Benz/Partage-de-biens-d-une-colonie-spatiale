@@ -55,4 +55,3 @@ public class RecapColonie {
         System.out.println("=== Fin de l'etat de la colonie ===");
     }
 }
-

@@ -14,8 +14,20 @@ public class Menu2 {
         this.colonie = colonie; // Réutilisation de l'instance
     }
 
-    public void afficherMenu2(Scanner scanner1) {
-        colonie.affectationNaive();
+    public void afficherMenu2(Scanner scanner1) throws Exception {
+        //colonie.affectationNaive();
+        //colonie.affectationOptimisee(); // Remplace affectationNaive par attributionOptimale
+        // Appel de l'attribution optimisée mta el tfol
+        List<Ressource> ressources = colonie.getRessources().keySet().stream().toList(); // Exemple pour obtenir les ressources
+
+        // Créez une instance d'AttributionOptimale avec la colonie unique
+        AttributionOptimale attributionOpt = new AttributionOptimale(colonie, colonie.getListeColons(), colonie.getRessources());
+
+        // Appel de la méthode d'attribution optimisée
+        int coutJaloux = attributionOpt.affectationOptimisee(ressources);
+        System.out.println("Coût de jalousie après attribution optimisée : " + coutJaloux);
+
+
         do {
             // Affiche le 2ème menu
             System.out.println("Veuillez entrer votre choix pour le deuxieme menu");
