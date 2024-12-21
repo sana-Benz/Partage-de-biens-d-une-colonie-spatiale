@@ -17,7 +17,7 @@ public class Menu2 {
     }
 
     public void afficherMenu2(Scanner scanner1) throws Exception {
-        colonie.affectationNaive();
+        //colonie.affectationNaive();
         //colonie.affectationOptimisee(); // Remplace affectationNaive par attributionOptimale
         // Appel de l'attribution optimisée mta el tfol
         List<Ressource> ressources = colonie.getRessources().keySet().stream().toList(); // Exemple pour obtenir les ressources

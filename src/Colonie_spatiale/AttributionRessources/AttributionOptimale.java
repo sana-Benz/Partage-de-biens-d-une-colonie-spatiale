@@ -14,7 +14,7 @@ public class AttributionOptimale {
     public AttributionOptimale( Colonie colonies,List<Colon> colons, Map<Ressource, Colon> ressources) {
         this.colons = colons;
         this.ressources = ressources;
-        this.colonies = colonies; // Version du mec
+        this.colonies = colonies; // Version mtaa el tfol
 
     }
 
@@ -102,6 +102,7 @@ private int calculerTotalJalousie(List<Colon> colons) {
         }
     }*/
 
+//algo mta el tfol
 public int affectationOptimisee ( List<Ressource> ressources) throws Exception {
       //  Colonie colonie = colonies.get(colonieN);
         
@@ -110,6 +111,10 @@ public int affectationOptimisee ( List<Ressource> ressources) throws Exception {
             throw new Exception("Nombre de colons différent du nombre de ressources");
         }
         
+        // 1. Combinaison des deux algos Effectuer l'affectation naïve pour letat initial
+        colonies.affectationNaive(); // Appel de la méthode d'affectation naïve
+
+
         // 1. Créer une copie du graphe des relations et des préférences pour manipulation
         List<Colon> colonsTries = new ArrayList<>(colonies.getListeColons());
         
@@ -120,7 +125,7 @@ public int affectationOptimisee ( List<Ressource> ressources) throws Exception {
         Map<Colon, Ressource> meilleureAffectation = new HashMap<>();
         
         // 3. Phase 1 : Essayer plusieurs affectations initiales
-    for (int tentative = 0; tentative < 5; tentative++) {
+    for (int essai = 0; essai < 10; essai++) {
         // Réinitialiser les ressources
         List<Ressource> ressourcesTemp = new ArrayList<>(ressources);
         
@@ -138,8 +143,7 @@ public int affectationOptimisee ( List<Ressource> ressources) throws Exception {
                 int conflits = 0;
                 for (Colon voisin : colon.getEnnemis()) {
                     if (voisin.getRessourceAttribuee() != null && 
-                        colon.getlistepreferences().indexOf(voisin.getRessourceAttribuee()) < 
-                        colon.getlistepreferences().indexOf(ressourceCandidate)) {
+                        colon.getlistepreferences().indexOf(voisin.getRessourceAttribuee()) < colon.getlistepreferences().indexOf(ressourceCandidate)) {
                         conflits++;
                     }
                 }
