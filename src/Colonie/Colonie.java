@@ -23,14 +23,11 @@ public class Colonie {
     public void initialiserColons(List<String> nomsColons) {
         for (String nom : nomsColons) {
              colons.add(new Colon(nom)); }
-        System.out.println("Colons initialisés : " + colons.toString());
     }
     public void initialiserRessources(List<String> nomsRessources) {
         for (String nom : nomsRessources) {
             Ressource r = new Ressource(nom);
             ressources.put(r, null); }
-        // Afficher les colons pour vérification
-        System.out.println("Colons initialisés : " + colons);
     }
 
     public int getn() {
@@ -155,7 +152,7 @@ public class Colonie {
             if (ressource != null) { // Vérifie si la ressource est attribuée
                 System.out.println(colon.getNom() + " : " + ressource.getNom());
             } else {
-                System.out.println(colon.getNom() + " : aucune ressource attribuée");
+                System.out.println(colon.getNom() + " : aucune ressource attribuee");
             }
         }
     }
@@ -212,6 +209,16 @@ public class Colonie {
             // Comparaison des parties restantes
             return s1.substring(pos1).compareTo(s2.substring(pos2));
         }));
+    }
+
+
+    public boolean toutesRessourcesAttribuees() {
+        for (Colon colon : colons) {
+            if (colon.getRessourceAttribuee() == null) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

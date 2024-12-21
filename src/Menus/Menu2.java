@@ -50,7 +50,7 @@ public class Menu2 {
                 String input = scanner1.nextLine().trim(); // Lit l'entrée utilisateur
 
                 if (!input.matches("\\d+")) { // Vérifie si l'entrée est un entier
-                    System.out.println("Erreur : Veuillez entrer un numéro valide.");
+                    System.out.println("Erreur : Veuillez entrer un numero valide.");
                     continue;
                 }
 

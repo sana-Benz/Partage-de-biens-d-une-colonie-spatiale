@@ -27,7 +27,7 @@ public class Menu3 {
         do{
             // Affiche le 3ème menu
             System.out.println("Veuillez entrer votre choix pour le deuxieme menu");
-            System.out.println("1 Résolution automatique");
+            System.out.println("1 Resolution automatique");
             System.out.println("2 Sauvegarde de la solution actuelle ");
             System.out.println("3 Fin ");
 
@@ -36,17 +36,26 @@ public class Menu3 {
 
             switch (choix) {
                 case 1:
-                    AttributionOptimale attributionOpt = new AttributionOptimale(colonie,colonie.getListeColons() , ressources);
-                    System.out.println("l'attribution optimale a été effectuée");
-                    colonie.affichageaffection();
-                case 2:
-                    try {
-                        FichierColonie.saveAttribution();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    } catch (ExceptionColon e) {
+                    List<Ressource> ressources = colonie.getRessources().keySet().stream().toList();
+                    AttributionOptimale attributionOpt = new AttributionOptimale(colonie,colonie.getListeColons() , colonie.getRessources());
+                    try{
+                        attributionOpt.affectationOptimisee(colonie.getListeRessources());
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
+                    System.out.println("l'attribution optimale a ete effectuee");
+                    colonie.affichageaffection();
+                    break;
+                case 2:
+                    try {
+                        System.out.println("\nVeuillez entrer le nom du fichier pour sauvegarder les affectations :");
+                        System.out.println("Vous trouverez le fichier dans le repertoire courant ");
+                        String nomFichier = scanner1.nextLine().trim();
+                        FichierColonie.saveAttribution(nomFichier,colonie);
+                    } catch (Exception e) {
+                        System.out.println("Erreur inattendue : " + e.getMessage());
+                    }
+                    break;
                 case 3:
                     break;
 

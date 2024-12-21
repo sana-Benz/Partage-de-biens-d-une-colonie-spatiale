@@ -5,10 +5,11 @@ import ExceptionColonie.ExceptionColon;
 
 import java.io.*;
 import java.util.*;
+import java.nio.file.Files;
 
 public class FichierColonie {
 
-    public static Colonie chargerDepuisFichier(String cheminFichier, int n) throws ExceptionColon, IOException {
+    public static Colonie chargerDepuisFichier(String cheminFichier, int n) throws ExceptionColon, IOException, FileNotFoundException {
         BufferedReader reader = new BufferedReader(new FileReader(cheminFichier));
         String ligne;
         List<String> nomsColons = new ArrayList<>();
@@ -111,14 +112,52 @@ public class FichierColonie {
     }
 
 
-    public static void saveAttribution() throws ExceptionColon, IOException {
 
-        System.out.println("en train de faire savestate");
+    public static void saveAttribution(String nomFichier, Colonie colonie) throws IOException {
+        // Vérifiez si toutes les ressources sont attribuées
+        if (!colonie.toutesRessourcesAttribuees()) {
+            throw new IOException("Erreur : Les ressources n'ont pas ete attribuees a tous les colons. Veuillez effectuer une attribution avant de sauvegarder.");
+        }
 
+        // Ajoutez l'extension .txt si nécessaire
+        if (!nomFichier.endsWith(".txt")) {
+            nomFichier += ".txt";
+        }
 
+        // Obtenez le chemin complet dans le répertoire courant
+        File fichier = new File(nomFichier);
+
+        // Vérifiez si le fichier existe déjà
+        if (fichier.exists()) {
+            throw new IOException("Erreur : Un fichier avec le nom '" + nomFichier + "' existe deja dans le repertoire courant.");
+        }
+
+        // Écriture dans le fichier
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fichier))) {
+            colonie.trierColonsParNom();
+            int cout = colonie.nombreColonsJaloux();
+            writer.write("cout = " + cout + "\n");
+
+            for (Colon colon : colonie.getListeColons()) {
+                Ressource ressource = colon.getRessourceAttribuee();
+
+                if (ressource != null) {
+                    writer.write(colon.getNom() + ":" + ressource.getNom());
+                } else {
+                    writer.write(colon.getNom() + ":aucune ressource attribuee");
+                }
+                writer.newLine();
+            }
+            System.out.println("Les affectations ont ete sauvegardees dans le fichier : " + fichier.getAbsolutePath());
+        }
     }
 
 
 
 
-    }
+
+
+
+
+
+}

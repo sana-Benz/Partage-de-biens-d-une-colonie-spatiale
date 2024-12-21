@@ -25,7 +25,7 @@ public class RecapColonie {
             System.out.print("  Preferences : ");
             List<Ressource> preferences = colon.getlistepreferences();
             if (preferences.isEmpty()) {
-                System.out.println("Aucune préférence definie.");
+                System.out.println("Aucune preference definie.");
             } else {
                 for (Ressource ressource : preferences) {
                     System.out.print(ressource.getNom() + " ");
