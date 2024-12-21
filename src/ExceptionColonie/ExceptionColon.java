@@ -1,4 +1,4 @@
-package Colonie_spatiale;
+package ExceptionColonie;
 
 public class ExceptionColon extends Exception {
 

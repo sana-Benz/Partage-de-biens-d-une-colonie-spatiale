@@ -1,9 +1,11 @@
-package Colonie_spatiale;
+package Main;
 
-import Colonie_spatiale.AttributionRessources.Menu2;
-import Colonie_spatiale.CreationColonie.Colonie;
-import Colonie_spatiale.CreationColonie.FichierColonie;
-import Colonie_spatiale.CreationColonie.Menu1;
+import Menus.Menu2;
+import Colonie.Colonie;
+import Affichages.RecapColonie;
+import DataAccess.FichierColonie;
+import Menus.Menu1;
+import ExceptionColonie.ExceptionColon;
 
 import java.io.IOException;
 import java.util.Scanner;

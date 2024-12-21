@@ -1,4 +1,4 @@
-package Colonie_spatiale.CreationColonie;
+package Colonie;
 
 import java.util.*;
 

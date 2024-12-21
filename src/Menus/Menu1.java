@@ -1,6 +1,7 @@
-package Colonie_spatiale.CreationColonie;
+package Menus;
 
-import Colonie_spatiale.ExceptionColon;
+import Colonie.*;
+import ExceptionColonie.ExceptionColon;
 
 import java.util.ArrayList;
 import java.util.List;

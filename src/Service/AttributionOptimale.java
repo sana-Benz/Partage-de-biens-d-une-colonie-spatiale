@@ -1,6 +1,6 @@
-package Colonie_spatiale.AttributionRessources;
-import Colonie_spatiale.CreationColonie.Colon;
-import Colonie_spatiale.CreationColonie.Ressource;
+package Service;
+import Colonie.Colon;
+import Colonie.Ressource;
 
 import java.util.*;
 

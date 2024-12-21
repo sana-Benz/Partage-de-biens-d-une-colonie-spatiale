@@ -1,10 +1,11 @@
-package Colonie_spatiale.AttributionRessources;
+package Menus;
 
-import Colonie_spatiale.CreationColonie.Colon;
-import Colonie_spatiale.CreationColonie.Colonie;
-import Colonie_spatiale.CreationColonie.FichierColonie;
-import Colonie_spatiale.CreationColonie.Ressource;
-import Colonie_spatiale.ExceptionColon;
+import Colonie.Colon;
+import Colonie.Colonie;
+import DataAccess.FichierColonie;
+import Colonie.Ressource;
+import ExceptionColonie.ExceptionColon;
+import Service.AttributionOptimale;
 
 import java.io.IOException;
 import java.util.Map;

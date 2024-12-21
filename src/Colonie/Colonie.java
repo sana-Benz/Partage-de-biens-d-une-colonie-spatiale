@@ -1,6 +1,6 @@
-package Colonie_spatiale.CreationColonie;
+package Colonie;
 
-import Colonie_spatiale.ExceptionColon;
+import ExceptionColonie.ExceptionColon;
 
 import java.util.*;
 import java.util.regex.Matcher;
