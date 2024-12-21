@@ -1,6 +1,7 @@
-package Colonie_spatiale.CreationColonie;
+package Menus;
 
-import Colonie_spatiale.ExceptionColon;
+import Colonie.*;
+import ExceptionColonie.ExceptionColon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,24 +26,49 @@ public class Menu1 {
     }
 
     public void afficherMenu1(Scanner scanner1) {
-        // Initialisation de la colonie
+
+        // Initialisation de la colonie avec ordre A B C D
+        /*System.out.println("Avant l'initialisation des colons");
+        List<String> nomsColons = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            nomsColons.add(String.valueOf((char) ('A' + i))); // Génère A, B, C...
+        }*/
         try {
             colonie = new Colonie(n);
         } catch (ExceptionColon e) {
             System.err.println("Erreur lors de la creation de la colonie : " + e.getMessage());
             return; // Stoppe l'exécution si la colonie ne peut pas être créée
         }
+        //initialisation sans ordre
+        //Scanner scanner1 = new Scanner(System.in);
+        List<String> nomsColons = new ArrayList<>();
+
+        System.out.println("Veuillez entrer les noms des " + n + " colons (séparés par des espaces ou sur plusieurs lignes) :");
+        for (int i = 0; i < n; i++) {
+            System.out.println("Colon " + (i + 1) + " :");
+            String nom = scanner1.nextLine().trim(); // Lit et nettoie le nom
+            nomsColons.add(nom);
+        }
+        colonie.initialiserColons(nomsColons); // Appelez la méthode pour initialiser les colons
+        System.out.println("Après l'initialisation des colons : " + colonie.getlistecolons());
+
+
+
 
         // Initialiser les colons
-        List<String> nomsColons = new ArrayList<>();
-        for (int i = 0; i < n; i++) { nomsColons.add("Colon" + i); }
-        colonie.initialiserColons(nomsColons);
+        //List<String> nomsColons = new ArrayList<>();
+        //for (int i = 0; i < n; i++) { nomsColons.add("Colon" + i); }
+        //colonie.initialiserColons(nomsColons);
         // Initialiser les ressources
         List<String> nomsRessources = new ArrayList<>();
-        for (int i = 1; i <= n; i++) { nomsRessources.add("Ressource" + i); }
+        for (int i = 1; i <= n; i++) {
+            System.out.println("Ressource " + (i ) + " :");
+            String nom = scanner1.nextLine().trim(); // Lit et nettoie le nom
+            nomsRessources.add(nom);}
         colonie.initialiserRessources(nomsRessources);
 
         boolean incomplet = true;
+
 
         do {
             // Affiche le menu
@@ -69,11 +95,11 @@ public class Menu1 {
                     String[] parts = input.split(" ");
 
                     if (parts.length >= 2) {
-                        char nom1 = parts[0].charAt(0);
-                        char nom2 = parts[1].charAt(0);
+                        String nom1 = parts[0];
+                        String nom2 = parts[1];
 
-                        Colon colon1 = colonie.getColon(String.valueOf(nom1));
-                        Colon colon2 = colonie.getColon(String.valueOf(nom2));
+                        Colon colon1 = colonie.getColon(nom1);
+                        Colon colon2 = colonie.getColon(nom2);
 
                         if (colon1 != null && colon2 != null) {
                             colon1.ajoutennemi(colon2);
@@ -94,8 +120,8 @@ public class Menu1 {
                     String input1 = scanner1.nextLine();
                     String[] les_parts = input1.split(" ");
 
-                    char nomColon = les_parts[0].charAt(0);
-                    Colon colon = colonie.getColon(String.valueOf(nomColon));
+                    String nomColon = les_parts[0];
+                    Colon colon = colonie.getColon(nomColon);
 
                     if (colon == null) {
                         System.out.println("Erreur : Le colon n'existe pas.");
@@ -103,7 +129,7 @@ public class Menu1 {
                     }
 
                     for (int i = 1; i < les_parts.length; i++) {
-                        Ressource opt = new Ressource(String.valueOf(les_parts[i].charAt(0)));
+                        Ressource opt = new Ressource(les_parts[i]);
                         colon.ajoutpreference(opt);
                     }
                     colon.AfficherListePref();
@@ -132,5 +158,7 @@ public class Menu1 {
                     break;
             }
         } while (choix != 3 || incomplet);
+        // Fermer le scanner
+        //scanner1.close();
     }
 }

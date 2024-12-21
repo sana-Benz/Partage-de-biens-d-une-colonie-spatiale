@@ -1,9 +1,11 @@
-package Colonie_spatiale;
+package Main;
 
-import Colonie_spatiale.AttributionRessources.Menu2;
-import Colonie_spatiale.CreationColonie.Colonie;
-import Colonie_spatiale.CreationColonie.FichierColonie;
-import Colonie_spatiale.CreationColonie.Menu1;
+import Menus.Menu2;
+import Colonie.Colonie;
+import Affichages.RecapColonie;
+import DataAccess.FichierColonie;
+import Menus.Menu1;
+import ExceptionColonie.ExceptionColon;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ import java.util.Scanner;
 public class Main {
     public static int n=0; // Déclaration statique pour utilisation globale
 
-    public static void main(String[] args) throws ExceptionColon {
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in); // Création du scanner une seule fois
 
         Colonie colonie = null;
@@ -46,12 +48,16 @@ public class Main {
             }
 
             Menu1 menu1 = new Menu1(n);
-            menu1.afficherMenu1(scanner); // Passe le scanner à Menu1 pour éviter d'en créer un nouveau
+            menu1.afficherMenu1(scanner);
+            colonie=menu1.getColonie();
+            if (colonie == null) {
+                System.out.println("Erreur : La colonie n'a pas ete correctement initialisee.");
+                return;
+            }
 
-            colonie = menu1.getColonie();
         }
 
-         //afficher le recap de colonie avant le menu 2
+        //afficher le recap de colonie avant le menu 2
         System.out.println("\n=== Recapitulatif de l'etat de la colonie ===");
         RecapColonie recap = new RecapColonie(colonie);
         recap.afficherEtatColonie();

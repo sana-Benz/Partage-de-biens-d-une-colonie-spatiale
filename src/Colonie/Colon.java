@@ -1,4 +1,4 @@
-package Colonie_spatiale.CreationColonie;
+package Colonie;
 
 import java.util.*;
 
@@ -73,11 +73,12 @@ public class Colon {
             return false;
         }
         boolean result = this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuee);
-        System.out.println(
-                "Le colon " + nom + " prefere " + ressource + " a " + this.ressourceAttribuee + " ? " + result);
         return result;
     }
-
+    @Override
+    public String toString() {
+        return nom; // Retourne uniquement le nom du colon
+    }
 
 
 }

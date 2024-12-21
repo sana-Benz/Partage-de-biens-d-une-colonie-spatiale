@@ -1,8 +1,8 @@
-package Colonie_spatiale;
+package Affichages;
 
-import Colonie_spatiale.CreationColonie.Colon;
-import Colonie_spatiale.CreationColonie.Colonie;
-import Colonie_spatiale.CreationColonie.Ressource;
+import Colonie.Colon;
+import Colonie.Colonie;
+import Colonie.Ressource;
 
 import java.util.List;
 
@@ -55,4 +55,3 @@ public class RecapColonie {
         System.out.println("=== Fin de l'etat de la colonie ===");
     }
 }
-

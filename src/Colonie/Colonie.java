@@ -1,6 +1,6 @@
-package Colonie_spatiale.CreationColonie;
+package Colonie;
 
-import Colonie_spatiale.ExceptionColon;
+import ExceptionColonie.ExceptionColon;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -22,12 +22,15 @@ public class Colonie {
 
     public void initialiserColons(List<String> nomsColons) {
         for (String nom : nomsColons) {
-            Colon c = new Colon(nom); colons.add(c); }
+             colons.add(new Colon(nom)); }
+        System.out.println("Colons initialisés : " + colons.toString());
     }
     public void initialiserRessources(List<String> nomsRessources) {
         for (String nom : nomsRessources) {
             Ressource r = new Ressource(nom);
             ressources.put(r, null); }
+        // Afficher les colons pour vérification
+        System.out.println("Colons initialisés : " + colons);
     }
 
     public int getn() {
@@ -38,6 +41,13 @@ public class Colonie {
         return colons;
     }
 
+    public List<Ressource> getListeRessources(){
+        List<Ressource> keysList = new ArrayList<>();
+        for (Ressource key : ressources.keySet()) {
+            keysList.add(key);
+        }
+        return keysList;
+    }
 
     public void setRessources(Map<Ressource, Colon> ressources) {
         this.ressources = ressources;
@@ -51,6 +61,7 @@ public class Colonie {
         }
         return null;
     }
+
 
     public void ajoutColon(Colon c) throws ExceptionColon {
         if (colons.size() > n) {
@@ -67,19 +78,46 @@ public class Colonie {
         return ressources;
     }
 
-    // solution naive
-    public void affectationNaive() {
-        for (Colon c : colons) {
-            for (Ressource p : c.getlistepreferences()) {
-                Ressource ressource = getRessourceParNom(p.getNom());
-                if (ressource != null && ressources.get(ressource) == null) {
-                    c.setRessourceAttribuee(ressource);
-                    ressources.put(ressource, c);
-                    break;
+
+
+    //Cette affectation optimisee retourne la meme chose que laffectation naive
+    /*public void affectationOptimisee() { 
+        // Étape 1 : Trier les colons par ordre décroissant du nombre d'ennemis
+        List<Colon> colonsTries = new ArrayList<>(colons);
+        colonsTries.sort((a, b) -> b.getEnnemis().size() - a.getEnnemis().size());
+
+        // Étape 2 : Affecter les ressources
+        for (Colon colon : colonsTries) {
+            Ressource meilleureRessource = null;
+            int minPopularite = Integer.MAX_VALUE;
+
+            for (Ressource ressource : colon.getlistepreferences()) {
+                // Vérifier si la ressource est disponible
+                if (ressources.get(ressource) == null) { // La ressource n'est pas encore attribuée
+                    // Calculer combien d'ennemis convoitent cette ressource
+                    int popularite = 0;
+                    for (Colon ennemi : colon.getEnnemis()) {
+                        if (ennemi.getlistepreferences().contains(ressource)) {
+                            popularite++;
+                        }
+                    }
+
+                    // Sélectionner la ressource la moins convoitée
+                    if (popularite < minPopularite) {
+                        meilleureRessource = ressource;
+                        minPopularite = popularite;
+                    }
                 }
             }
+
+            // Affecter la meilleure ressource trouvée au colon
+            if (meilleureRessource != null) {
+                colon.setRessourceAttribuee(meilleureRessource);
+                ressources.put(meilleureRessource, colon);
+            }
         }
-    }
+    }*/
+    
 
     public int nombreColonsJaloux() {
         int nombreJaloux = 0;
@@ -88,9 +126,7 @@ public class Colonie {
             for (Colon ennemi : colon.getEnnemis()) {
                 Ressource ressourceEnnemi = ennemi.getRessourceAttribuee();
 
-                if (colon.prefereObjet(ressourceEnnemi)) { // !ressourceColon.equals(ressourceEnnemi)) {
-                    System.out.println("Le colon " + colon.getNom() + " est jaloux de l'ennemi " + ennemi.getNom()
-                            + " avec ressource " + ressourceEnnemi);
+                if (colon.prefereObjet(ressourceEnnemi)) {
                     colon.setJaloux();
                     nombreJaloux++;
 
@@ -177,6 +213,5 @@ public class Colonie {
             return s1.substring(pos1).compareTo(s2.substring(pos2));
         }));
     }
-
 
 }

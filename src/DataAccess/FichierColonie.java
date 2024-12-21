@@ -1,6 +1,7 @@
-package Colonie_spatiale.CreationColonie;
+package DataAccess;
 
-import Colonie_spatiale.ExceptionColon;
+import Colonie.*;
+import ExceptionColonie.ExceptionColon;
 
 import java.io.*;
 import java.util.*;
