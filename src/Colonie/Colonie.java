@@ -12,9 +12,6 @@ public class Colonie {
     private Map<Ressource, Colon> ressources;
 
     public Colonie(int n) throws ExceptionColon {
-        if (n > 26) {
-            throw new ExceptionColon("Le nombre de colons ne peut pas depasser 26.");
-        }
         this.n = n;
         this.colons = new ArrayList<>();
         this.ressources = new HashMap<>();
