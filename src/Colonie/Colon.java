@@ -73,7 +73,6 @@ public class Colon {
 
     public boolean prefereObjet(Ressource ressource) {
         if (this.ressourceAttribuee == null || ressource == null) {
-            System.out.println("Erreur : ressourceAttribuee ou ressource est null");
             return false;
         }
         if (!this.preferences.contains(ressource)) {
@@ -87,8 +86,7 @@ public class Colon {
                     + " n'est pas trouvee dans les preferences de " + nom);
             return false;
         }
-        boolean result = this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuee);
-        return result;
+        return this.preferences.indexOf(ressource) < this.preferences.indexOf(this.ressourceAttribuee);
     }
     @Override
     public String toString() {

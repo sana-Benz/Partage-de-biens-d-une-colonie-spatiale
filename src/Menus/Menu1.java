@@ -264,7 +264,6 @@ public class Menu1 {
                     break;
             }
         } while (choix != 3 || incomplet);
-        // Fermer le scanner
-        //scanner1.close();
     }
+
 }

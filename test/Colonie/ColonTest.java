@@ -1,4 +1,5 @@
 package Colonie;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -44,6 +45,7 @@ class ColonTest {
         }catch(Exception e) {
             System.out.println(e);
         }
+
 
         List<Colon> ennemis = colon.getEnnemis();
         assertEquals(1, ennemis.size(), "Le nombre d'ennemis est incorrect.");
