@@ -1,5 +1,6 @@
 package Colonie;
 
+import ExceptionColonie.ExceptionColon;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +39,7 @@ class ColonTest {
     }
 
     @Test
-    void testAjoutEnnemi() {
+    void testAjoutEnnemi() throws ExceptionColon {
         Colon ennemi = new Colon("Bob");
         colon.ajoutennemi(ennemi);
 
