@@ -158,9 +158,13 @@ public class Menu1 {
                         Colon colon2 = colonie.getColon(nom2);
 
                         if (colon1 != null && colon2 != null) {
-                            colon1.ajoutennemi(colon2);
-                            colon2.ajoutennemi(colon1);
-                            System.out.println("Relation ajoutee entre " + nom1 + " et " + nom2);
+                            try {
+                                colon1.ajoutennemi(colon2);
+                                colon2.ajoutennemi(colon1);
+                                System.out.println("Relation ajoutée entre " + nom1 + " et " + nom2);
+                            } catch (ExceptionColon e) {
+                                System.out.println(e.getMessage());
+                            }
                         } else {
                             System.out.println("L'un des colons specifies n'existe pas.");
                         }
