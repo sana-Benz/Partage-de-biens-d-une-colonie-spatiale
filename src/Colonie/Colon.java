@@ -37,17 +37,26 @@ public class Colon {
 
 
     public void ajoutpreference(Ressource p) {
-        preferences.add(p);
-
+        if (!preferences.contains(p)) {
+            preferences.add(p);
+        } else {
+            System.out.println("Erreur : La ressource " + p.getNom() + " est déjà dans les préférences.");
+        }
     }
+
 
     public ArrayList<Ressource> getlistepreferences() {
         return preferences;
     }
 
     public void AfficherListePref() {
-        System.out.println("preference du colon" + nom + ": " + this.preferences);
+        System.out.print("Preferences du colon " + nom + ": ");
+        for (Ressource r : preferences) {
+            System.out.print(r.getNom() + " ");
+        }
+        System.out.println();
     }
+
 
     public void setRessourceAttribuee(Ressource r) {
         ressourceAttribuee = r;

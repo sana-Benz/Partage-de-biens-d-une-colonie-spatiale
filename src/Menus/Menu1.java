@@ -173,61 +173,73 @@ public class Menu1 {
                     }
                     break;
 
-                    case 2:
+                case 2:
                     // Ajouter les préférences d'un colon
-                    String nomColon;
-                    Colon colon;
                     boolean preferencesValides = false;
 
                     while (!preferencesValides) {
-                        System.out.println("Entrez toutes les preferences d'un colon en ordre decroissant (par exemple, A 1 2 3) :");
-                        String input1 = scanner1.nextLine();
-                        String[] les_parts = input1.split(" ");
+                        System.out.println("Entrez toutes les préférences d'un colon en ordre décroissant (par exemple, A 1 2 3) :");
+                        String input1 = scanner1.nextLine().trim();
+                        String[] les_parts = input1.split("\\s+");
 
-                        nomColon = les_parts[0];
-                        colon = colonie.getColon(nomColon);
+                        // Vérification du nom du colon
+                        String nomColon = les_parts[0];
+                        Colon colon = colonie.getColon(nomColon);
 
                         if (colon == null) {
-                            System.out.println("Erreur : Le colon n 'existe pas.");
+                            System.out.println("Erreur : Le colon '" + nomColon + "' n'existe pas.");
                             break;
                         }
+
                         // Vérification si les préférences ont déjà été saisies
                         if (!colon.getlistepreferences().isEmpty()) {
                             System.out.println("Erreur : Les préférences pour le colon " + nomColon + " ont déjà été saisies.");
                             break;
                         }
 
-                        // Vérification des préférences
+                        // Vérification du nombre de préférences
                         if (les_parts.length - 1 != n) {
                             System.out.println("Erreur : Vous devez entrer exactement " + n + " préférences pour le colon " + nomColon);
                             continue; // Redemander les préférences
                         }
 
-                        // Vérification des doublons
+                        // Vérification des doublons et de l'existence des ressources
                         HashSet<String> preferencesSet = new HashSet<>();
-                        boolean doublonTrouve = false;
+                        List<Ressource> preferences = new ArrayList<>();
+                        boolean erreurDetectee = false;
 
                         for (int i = 1; i < les_parts.length; i++) {
-                            if (!preferencesSet.add(les_parts[i])) {
-                                doublonTrouve = true; // Un doublon a été trouvé
+                            String ressourceNom = les_parts[i];
+
+                            if (!preferencesSet.add(ressourceNom)) {
+                                System.out.println("Erreur : La ressource '" + ressourceNom + "' est entrée plusieurs fois. Veuillez réessayer.");
+                                erreurDetectee = true;
                                 break;
                             }
+
+                            Ressource ressource = colonie.getRessourceParNom(ressourceNom);
+                            if (ressource == null) {
+                                System.out.println("Erreur : La ressource '" + ressourceNom + "' n'existe pas.");
+                                erreurDetectee = true;
+                                break;
+                            }
+
+                            preferences.add(ressource);
                         }
 
-                        if (doublonTrouve) {
-                            System.out.println("Erreur : Vous ne pouvez pas entrer deux fois la même ressource. Veuillez réessayer.");
+                        if (erreurDetectee) {
                             continue; // Redemander les préférences
                         }
-                        
-                        preferencesValides = true; // Supposer que les préférences sont valides
 
-                        for (int i = 1; i < les_parts.length; i++) {
-                            Ressource opt = new Ressource(les_parts[i]);
-                            colon.ajoutpreference(opt);
+                        // Si toutes les validations passent, ajoutez les préférences au colon
+                        for (Ressource ressource : preferences) {
+                            colon.ajoutpreference(ressource);
                         }
                         colon.AfficherListePref();
+                        preferencesValides = true; // Sortie de la boucle
                     }
                     break;
+
 
                 case 3:
                     // Vérifier si toutes les informations sont complètes

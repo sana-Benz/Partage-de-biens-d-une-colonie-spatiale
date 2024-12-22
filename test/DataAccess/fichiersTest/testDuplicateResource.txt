@@ -1,0 +1,3 @@
+colon(A).
+ressource(R1).
+ressource(R1).

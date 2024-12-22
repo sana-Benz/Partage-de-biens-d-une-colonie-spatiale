@@ -1,0 +1,4 @@
+colon(A).
+ressource(R1).
+deteste(A).
+preferences(A,R1).

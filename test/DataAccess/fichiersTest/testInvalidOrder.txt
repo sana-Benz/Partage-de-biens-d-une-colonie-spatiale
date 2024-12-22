@@ -1,0 +1,7 @@
+deteste(A,B).
+ressource(R1).
+colon(A).
+colon(B).
+ressource(R2).
+preferences(A,R1,R2).
+preferences(B,R1,R2).
