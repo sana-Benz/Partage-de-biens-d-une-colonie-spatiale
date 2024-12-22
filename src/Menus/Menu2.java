@@ -1,3 +1,8 @@
+/**
+ * Classe représentant le deuxième menu interactif pour la gestion de la colonie spatiale.
+ * Ce menu permet d'échanger les ressources entre deux colons, d'afficher le nombre de colons jaloux,
+ * et de quitter le menu.
+ */
 package Menus;
 
 import Affichages.RecapColonie;
@@ -10,45 +15,42 @@ import java.util.Scanner;
 
 
 public class Menu2 {
+    /**
+     * Choix de l'utilisateur dans le menu.
+     */
     private int choix;
 
+    /**
+     * Instance de la colonie spatiale partagée entre les différents menus.
+     */
     private Colonie colonie; // Référence à la colonie partagée
 
+    /**
+     * Constructeur de la classe Menu2.
+     *
+     * @param colonie l'instance de la colonie spatiale à manipuler
+     */
     public Menu2(Colonie colonie) {
         this.colonie = colonie; // Réutilisation de l'instance
     }
 
+    /**
+     * Affiche et gère les options du deuxième menu.
+     *
+     * @param scanner1 le scanner pour la lecture des entrées utilisateur
+     * @throws Exception si une erreur survient pendant l'exécution
+     */
     public void afficherMenu2(Scanner scanner1) throws Exception {
         AttributionNaive attNaive = new AttributionNaive(colonie.getlistecolons(),colonie.getRessources(),colonie);
         attNaive.affectationNaive();
         RecapColonie affichage = new RecapColonie(colonie);
-        //colonie.affectationOptimisee(); // Remplace affectationNaive par attributionOptimale
-        // Appel de l'attribution optimisée mta el tfol
-        //List<Ressource> ressources = colonie.getRessources().keySet().stream().toList(); // Exemple pour obtenir les ressources
-
-        // Créez une instance d'AttributionOptimale avec la colonie unique
-        //AttributionOptimale attributionOpt = new AttributionOptimale(colonie, colonie.getListeColons(), colonie.getRessources());
-
-        // Appel de la méthode d'attribution optimisée
-        //int coutJaloux = attributionOpt.affectationOptimisee(ressources);
-        //System.out.println("Coût de jalousie après attribution optimisée : " + coutJaloux);
-
 
         do {
-            // Affiche le 2ème menu
             System.out.println("Veuillez entrer votre choix pour le deuxieme menu");
             System.out.println("1 Echanger les ressources de deux colons");
             System.out.println("2 Afficher le nombre de colons jaloux ");
             System.out.println("3 Fin ");
 
-            /*if (scanner1.hasNextInt()) {
-                choix = scanner1.nextInt();
-                scanner1.nextLine(); // Consomme le saut de ligne
-            } else {
-                System.out.println("Erreur : Veuillez entrer un numéro valide.");
-                scanner1.nextLine(); // Vide la ligne incorrecte
-                continue;
-            }*/
             try {
                 System.out.print("Votre choix : ");
                 String input = scanner1.nextLine().trim(); // Lit l'entrée utilisateur

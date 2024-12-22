@@ -1,3 +1,8 @@
+/**
+ * Classe principale permettant de gérer l'application de la colonie spatiale.
+ * Cette classe permet de charger les données depuis un fichier ou de créer une colonie manuellement,
+ * et d'afficher les différents menus pour interagir avec la colonie.
+ */
 package Main;
 
 import Menus.Menu2;
@@ -12,8 +17,17 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static int n = 0; // Déclaration statique pour utilisation globale
+    /**
+     * Taille de la colonie, déclarée en tant que variable statique pour être utilisée globalement.
+     */
+    public static int n = 0;
 
+    /**
+     * Point d'entrée principal de l'application.
+     *
+     * @param args les arguments passés au programme, le premier étant le chemin d'un fichier à charger (optionnel)
+     * @throws Exception si une erreur survient lors de l'exécution
+     */
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in); // Création du scanner une seule fois
         Colonie colonie = null;

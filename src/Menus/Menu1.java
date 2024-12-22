@@ -1,3 +1,7 @@
+/**
+ * Classe représentant le premier menu pour l'initialisation de la colonie spatiale.
+ * Permet de définir les noms des colons et des ressources, ainsi que leurs relations et préférences.
+ */
 package Menus;
 
 import Colonie.*;
@@ -12,39 +16,63 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu1 {
+    /**
+     * Nombre total de colons ou de ressources dans la colonie.
+     */
     private int n;
+    /**
+     * Choix de l'utilisateur dans le menu.
+     */
     int choix;
+    /**
+     * Instance statique de la colonie partagée dans ce menu.
+     */
     private static Colonie colonie; // Champ statique
 
+    /**
+     * Constructeur de la classe Menu1.
+     *
+     * @param n Le nombre de colons et de ressources.
+     * @throws ExceptionColon Si la création de la colonie échoue.
+     */
     public Menu1(int n) throws ExceptionColon {
         colonie = new Colonie(n); // Initialisation de la colonie
         this.n = n;
     }
 
+    /**
+     * Retourne la taille de la colonie.
+     *
+     * @return La taille de la colonie.
+     */
     public int getN() {
         return n;
     }
 
+    /**
+     * Retourne l'instance de la colonie.
+     *
+     * @return L'instance de la colonie.
+     */
     public static Colonie getColonie() {
         return colonie;
     }
 
+    /**
+     * Affiche et gère les interactions du premier menu pour l'initialisation de la colonie.
+     *
+     * @param scanner1 Scanner pour lire les entrées utilisateur.
+     * @throws PreferencesInvalidException Si les préférences saisies sont invalides.
+     */
     public void afficherMenu1(Scanner scanner1) throws PreferencesInvalidException {
 
-        // Initialisation de la colonie avec ordre A B C D
-        /*System.out.println("Avant l'initialisation des colons");
-        List<String> nomsColons = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            nomsColons.add(String.valueOf((char) ('A' + i))); // Génère A, B, C...
-        }*/
         try {
             colonie = new Colonie(n);
         } catch (ExceptionColon e) {
             System.err.println("Erreur lors de la creation de la colonie : " + e.getMessage());
             return; // Stoppe l'exécution si la colonie ne peut pas être créée
         }
-        //initialisation sans ordre
-        //Scanner scanner1 = new Scanner(System.in);
+
         List<String> nomsColons = new ArrayList<>();
 
         boolean nomsValides = false;
@@ -71,7 +99,6 @@ public class Menu1 {
         }
 
         colonie.initialiserColons(nomsColons); // Appelez la méthode pour initialiser les colons
-        //System.out.println("Apres l'initialisation des colons : " + colonie.getlistecolons());
 
         List<String> nomsRessources = new ArrayList<>();
         boolean ressourcesValides = false;
@@ -108,18 +135,6 @@ public class Menu1 {
             }
         }
 
-        // Initialiser les colons
-        //List<String> nomsColons = new ArrayList<>();
-        //for (int i = 0; i < n; i++) { nomsColons.add("Colon" + i); }
-        //colonie.initialiserColons(nomsColons);
-        // Initialiser les ressources
-       //VERSION DE SANA
-     /*  List<String> nomsRessources = new ArrayList<>();
-        System.out.println("Veuillez entrer les noms des " + n + " ressources :");
-        for (int i = 1; i <= n; i++) {
-            System.out.println("Ressource " + (i ) + " :");
-            String nom = scanner1.nextLine().trim(); // Lit et nettoie le nom
-            nomsRessources.add(nom);}*/
         colonie.initialiserRessources(nomsRessources);
 
         boolean incomplet = true;
@@ -132,9 +147,6 @@ public class Menu1 {
             System.out.println("2. Ajouter les preferences d'un colon");
             System.out.println("3. Fin");
 
-            /*// Lecture du choix de l'utilisateur
-            choix = scanner1.nextInt();
-            scanner1.nextLine(); // Consomme le saut de ligne  */
             try {
                 System.out.print("Votre choix : ");
                 choix = Integer.parseInt(scanner1.nextLine()); // Utiliser nextLine et parser

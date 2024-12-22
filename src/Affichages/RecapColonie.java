@@ -1,3 +1,6 @@
+/**
+ * Le package {@code Affichages} contient des classes responsables de l'affichage des états et affectations d'une colonie spatiale.
+ */
 package Affichages;
 
 import Colonie.Colon;
@@ -6,14 +9,25 @@ import Colonie.Ressource;
 
 import java.util.List;
 
+/**
+ * La classe {@code RecapColonie} est responsable de l'affichage des états et des affectations d'une colonie.
+ */
 public class RecapColonie {
-
     private Colonie colonie;
 
+    /**
+     * Constructeur pour initialiser une instance de {@code RecapColonie} avec une colonie donnée.
+     *
+     * @param colonie la colonie à afficher
+     */
     public RecapColonie(Colonie colonie) {
         this.colonie = colonie;
     }
 
+    /**
+     * Affiche l'état de la colonie, y compris les colons, leurs préférences, leurs ennemis,
+     * et les ressources attribuées.
+     */
     public void afficherEtatColonie() {
         System.out.println("\n=== Recapitulatif de l'etat de la colonie ===");
         System.out.println("=== Etat de la Colonie ===");
@@ -57,6 +71,10 @@ public class RecapColonie {
     }
 
 
+    /**
+     * Affiche les informations relatives aux affectations des ressources,
+     * y compris le nombre de colons jaloux et les ressources attribuées à chaque colon.
+     */
     public void affichageaffection() {
         // Affichage du nombre de colons jaloux
         System.out.println("\n*** Voici le nombre de colons jaloux : ***");
