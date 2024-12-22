@@ -1,3 +1,7 @@
+/**
+ * Classe représentant le troisième menu interactif pour la gestion de la colonie spatiale.
+ * Ce menu permet de résoudre automatiquement les affectations, de sauvegarder les solutions, et de quitter le menu.
+ */
 package Menus;
 
 import Affichages.RecapColonie;
@@ -5,24 +9,40 @@ import Colonie.Colon;
 import Colonie.Colonie;
 import DataAccess.FichierColonie;
 import Colonie.Ressource;
-import ExceptionColonie.ExceptionColon;
 import Service.AttributionOptimale;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Menu3 {
+    /**
+     * Choix de l'utilisateur dans le menu.
+     */
     private int choix;
+    /**
+     * Instance de la colonie spatiale.
+     */
     private Colonie colonie; // Référence à la colonie
+    /**
+     * Carte des ressources et leurs colons associés.
+     */
     Map<Ressource, Colon> ressources;
 
-
+    /**
+     * Constructeur de la classe Menu3.
+     *
+     * @param colonie l'instance de la colonie spatiale à manipuler
+     */
     public Menu3(Colonie colonie) {
         this.colonie = colonie; // Réutilisation de l'instance
     }
 
+    /**
+     * Affiche et gère les options du troisième menu.
+     *
+     * @param scanner1 le scanner pour la lecture des entrées utilisateur
+     */
     public void afficherMenu3(Scanner scanner1) {
         RecapColonie affichage = new RecapColonie(colonie);
 
@@ -33,8 +53,6 @@ public class Menu3 {
             System.out.println("2 Sauvegarde de la solution actuelle ");
             System.out.println("3 Fin ");
 
-            //choix = scanner1.nextInt();
-            //scanner1.nextLine(); // Consomme le saut de ligne
             try {
                 System.out.print("Votre choix : ");
                 choix = Integer.parseInt(scanner1.nextLine()); // Utiliser nextLine et parser
@@ -52,7 +70,6 @@ public class Menu3 {
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                    //System.out.println("l'attribution optimale a ete effectuee");
                     affichage.affichageaffection();
                     break;
                 case 2:

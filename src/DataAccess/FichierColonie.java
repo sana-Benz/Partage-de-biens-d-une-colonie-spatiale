@@ -1,14 +1,29 @@
+/**
+ * Le package {@code DataAccess} contient des classes pour lire et écrire les états et configurations
+ * d'une colonie à partir de fichiers.
+ */
 package DataAccess;
 
 import Colonie.*;
 import ExceptionColonie.ExceptionColon;
-
 import java.io.*;
 import java.util.*;
-import java.nio.file.Files;
 
+/**
+ * La classe {@code FichierColonie} permet de charger une colonie à partir d'un fichier et de sauvegarder
+ * l'affectation des ressources d'une colonie dans un fichier.
+ */
 public class FichierColonie {
 
+    /**
+     * Charge une colonie à partir d'un fichier donné.
+     *
+     * @param cheminFichier le chemin du fichier à lire
+     * @param n             le nombre maximum de colons dans la colonie
+     * @return une instance de {@link Colonie} avec les données chargées
+     * @throws ExceptionColon si le fichier contient des erreurs de syntaxe ou de logique
+     * @throws IOException    si une erreur d'E/S se produit lors de la lecture du fichier
+     */
     public static Colonie chargerDepuisFichier(String cheminFichier, int n) throws ExceptionColon, IOException {
         BufferedReader reader = new BufferedReader(new FileReader(cheminFichier));
         String ligne;
@@ -125,7 +140,6 @@ public class FichierColonie {
             }
         }
 
-
         // Construction de la colonie
         Colonie colonie = new Colonie(n);
         colonie.initialiserColons(nomsColons);
@@ -157,23 +171,29 @@ public class FichierColonie {
 
 
 
-
-
+    /**
+     * Sauvegarde les affectations des ressources dans un fichier.
+     *
+     * @param nomFichier le nom du fichier dans lequel les affectations seront sauvegardées
+     * @param colonie    la colonie dont les affectations doivent être sauvegardées
+     * @param scanner    un scanner pour récupérer les saisies utilisateur en cas de doublons de fichiers
+     * @throws IOException si une erreur d'E/S se produit lors de la sauvegarde
+     */
     public static void saveAttribution(String nomFichier, Colonie colonie, Scanner scanner) throws IOException {
-        // Vérifiez si toutes les ressources sont attribuées
+        // Vérifier si toutes les ressources sont attribuées
         if (!colonie.toutesRessourcesAttribuees()) {
             throw new IOException("Erreur : Les ressources n'ont pas ete attribuees a tous les colons. Veuillez effectuer une attribution avant de sauvegarder.");
         }
 
-        // Ajoutez l'extension .txt si nécessaire
+        // Ajouter l'extension .txt si nécessaire
         if (!nomFichier.endsWith(".txt")) {
             nomFichier += ".txt";
         }
 
-        // Obtenez le chemin complet dans le répertoire courant
+        // Obtenir le chemin complet dans le répertoire courant
         File fichier = new File(nomFichier);
 
-        // Vérifiez si le fichier existe déjà
+        // Vérifier si le fichier existe déjà
         while (fichier.exists()) {
             System.out.println("Un fichier avec le nom '" + nomFichier + "' existe deje.");
             System.out.println("Voulez-vous l'ecraser ? (oui/non) : ");
@@ -212,13 +232,6 @@ public class FichierColonie {
             System.out.println("Les affectations ont ete sauvegardees dans le fichier : " + fichier.getAbsolutePath());
         }
     }
-
-
-
-
-
-
-
 
 
 }
