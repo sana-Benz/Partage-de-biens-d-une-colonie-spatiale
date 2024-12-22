@@ -41,7 +41,12 @@ class ColonTest {
     @Test
     void testAjoutEnnemi() throws ExceptionColon {
         Colon ennemi = new Colon("Bob");
-        colon.ajoutennemi(ennemi);
+        try {
+            colon.ajoutennemi(ennemi);
+        }catch(Exception e) {
+            System.out.println(e);
+        }
+
 
         List<Colon> ennemis = colon.getEnnemis();
         assertEquals(1, ennemis.size(), "Le nombre d'ennemis est incorrect.");

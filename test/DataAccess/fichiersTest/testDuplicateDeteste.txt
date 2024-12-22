@@ -1,0 +1,6 @@
+colon(A).
+colon(B).
+ressource(R1).
+ressource(R2).
+deteste(A,B).
+deteste(A,B).

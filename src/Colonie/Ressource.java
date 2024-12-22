@@ -17,8 +17,9 @@ public class Ressource {
         this.nom = nom;
     }
 
+    @Override
     public String toString() {
-        return "la ressource est " + nom;
+        return nom;
     }
 
     public boolean equals(Object o) {
