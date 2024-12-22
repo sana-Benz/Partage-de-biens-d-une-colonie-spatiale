@@ -33,9 +33,15 @@ public class Menu3 {
             System.out.println("2 Sauvegarde de la solution actuelle ");
             System.out.println("3 Fin ");
 
-            System.out.print("Votre choix : ");
-            choix = scanner1.nextInt();
-            scanner1.nextLine(); // Consomme le saut de ligne
+            //choix = scanner1.nextInt();
+            //scanner1.nextLine(); // Consomme le saut de ligne
+            try {
+                System.out.print("Votre choix : ");
+                choix = Integer.parseInt(scanner1.nextLine()); // Utiliser nextLine et parser
+            } catch (NumberFormatException e) {
+                System.out.println("L'entree doit etre un entier. Veuillez reessayer.");
+                continue; // Recommencer la boucle
+            }
 
             switch (choix) {
                 case 1:
