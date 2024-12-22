@@ -22,7 +22,7 @@ public class Colonie {
 
     public void initialiserColons(List<String> nomsColons) {
         for (String nom : nomsColons) {
-             colons.add(new Colon(nom)); }
+            colons.add(new Colon(nom)); }
     }
     public void initialiserRessources(List<String> nomsRessources) {
         for (String nom : nomsRessources) {
@@ -61,10 +61,12 @@ public class Colonie {
 
 
     public void ajoutColon(Colon c) throws ExceptionColon {
-        if (colons.size() > n) {
-            throw new ExceptionColon("Le nombre de colons ne peut pas depasser le nombre donne.");
+
+        if (colons.size() >= n) { // Empêche d'ajouter plus que n
+            throw new ExceptionColon("Le nombre de colons ne peut pas dépasser la limite.");
         }
         colons.add(c);
+
     }
 
     public List<Colon> getlistecolons() {
@@ -78,7 +80,7 @@ public class Colonie {
 
 
     //Cette affectation optimisee retourne la meme chose que laffectation naive
-    /*public void affectationOptimisee() { 
+    /*public void affectationOptimisee() {
         // Étape 1 : Trier les colons par ordre décroissant du nombre d'ennemis
         List<Colon> colonsTries = new ArrayList<>(colons);
         colonsTries.sort((a, b) -> b.getEnnemis().size() - a.getEnnemis().size());
@@ -114,7 +116,7 @@ public class Colonie {
             }
         }
     }*/
-    
+
 
     public int nombreColonsJaloux() {
         int nombreJaloux = 0;
@@ -123,10 +125,9 @@ public class Colonie {
             for (Colon ennemi : colon.getEnnemis()) {
                 Ressource ressourceEnnemi = ennemi.getRessourceAttribuee();
 
-                if (colon.prefereObjet(ressourceEnnemi)) {
+                if (ressourceEnnemi != null && colon.prefereObjet(ressourceEnnemi)) {
                     colon.setJaloux();
                     nombreJaloux++;
-
                 }
             }
         }
@@ -157,7 +158,6 @@ public class Colonie {
 
             colon2.setRessourceAttribuee(ressource1);
 
-            // Met à jour le dictionnaire de ressources
 
             ressources.put(ressource1, colon2);
 
@@ -173,7 +173,6 @@ public class Colonie {
 
     public void trierColonsParNom() {
         colons.sort(Comparator.comparing(colon -> colon.getNom(), (s1, s2) -> {
-            // Comparateur pour trier naturellement les noms
             Pattern pattern = Pattern.compile("\\d+");
             Matcher m1 = pattern.matcher(s1);
             Matcher m2 = pattern.matcher(s2);
@@ -181,20 +180,16 @@ public class Colonie {
             int pos1 = 0, pos2 = 0;
 
             while (m1.find(pos1) && m2.find(pos2)) {
-                // Comparaison des parties non numériques
                 int compareText = s1.substring(pos1, m1.start()).compareTo(s2.substring(pos2, m2.start()));
                 if (compareText != 0) return compareText;
 
-                // Comparaison des parties numériques
                 int num1 = Integer.parseInt(m1.group());
                 int num2 = Integer.parseInt(m2.group());
                 if (num1 != num2) return Integer.compare(num1, num2);
 
-                // Avance aux positions suivantes
                 pos1 = m1.end();
                 pos2 = m2.end();
             }
-            // Comparaison des parties restantes
             return s1.substring(pos1).compareTo(s2.substring(pos2));
         }));
     }
