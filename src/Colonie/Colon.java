@@ -1,5 +1,7 @@
 package Colonie;
 
+import ExceptionColonie.ExceptionColon;
+
 import java.util.*;
 
 public class Colon {
@@ -26,9 +28,13 @@ public class Colon {
         this.jaloux = true;
     }
 
-    public void ajoutennemi(Colon c) {
+    public void ajoutennemi(Colon c) throws ExceptionColon {
+        if (ennemis.contains(c)) {
+            throw new ExceptionColon("La relation 'deteste' entre '" + this.nom + "' et '" + c.getNom() + "' existe déjà.");
+        }
         ennemis.add(c);
     }
+
 
     public void ajoutpreference(Ressource p) {
         preferences.add(p);
