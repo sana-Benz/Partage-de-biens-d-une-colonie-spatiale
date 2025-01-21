@@ -1,4 +1,4 @@
-﻿# Projet de Gestion des Ressources de la Colonie
+﻿# Projet de Gestion des Ressources attribuées dans une colonie spatiale
 
 
 ## Description
@@ -8,10 +8,29 @@ Un colon est jaloux si l'un de ses ennemis reçoit une ressource qu'il aurait pr
 
 Pour résoudre ce problème, deux approches ont été développées :
 1. **Approche naïve** : Attribue à chaque colon la première ressource disponible dans sa liste de préférences.
-2. **Approche optimisée** : Une attribution naïve est d'abord réalisée. Les colons sont ensuite triés en fonction du nombre de conflits .L'algorithme tente différentes affectations pour minimiser les conflits et des échanges de ressources sont ensuite effectués pour réduire les conflits locaux. A la fin, La meilleure attribution, minimisant la jalousie, est choisie.
+   
+2. **Approche Optimisée**
+- **Étape 1 : Attribution initiale**  
+  Une attribution naïve est réalisée pour fournir une solution de départ.
+  
+- **Étape 2 : Tri des colons par conflits**  
+  Les colons sont triés selon le nombre de conflits avec leurs ennemis (jalousie).  
+
+- **Étape 3 : Optimisation par échanges locaux**  
+  - L'algorithme explore différentes affectations pour minimiser les conflits.  
+  - Des **échanges de ressources** sont réalisés entre les colons afin de réduire les conflits locaux.  
+
+- **Étape 4 : Sélection de la meilleure attribution**  
+  À la fin, la solution qui minimise le mieux la jalousie est choisie.
+
+### Comparaison des Approches
+
+| **Approche**         | **Caractéristiques**                                                                                     | **Avantages**                       | **Limites**                           |
+|-----------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------|---------------------------------------|
+| **Naïve**            | Simple, rapide, attribue la première ressource disponible.                                              | Facilité d'implémentation.          | Peut générer beaucoup de conflits.    |
+| **Optimisée**         | Améliore l'attribution initiale en minimisant les conflits via des échanges locaux.                     | Réduction significative des conflits. | Plus complexe et nécessite plus de temps. |
 
 
----
 
 
 ## Instructions d'Exécution du Programme
@@ -20,31 +39,31 @@ Pour résoudre ce problème, deux approches ont été développées :
 ### Prérequis
 Avant de commencer, assurez-vous que Java est installé sur votre machine. Vous pouvez vérifier cela en exécutant la commande suivante dans votre terminal :
 ```bash
-java -version```
+java -version
+```
 
 
 ### Étapes d'Exécution
-
 
 1) **Ouvrir le Dossier du Projet** : Ouvrez le dossier contenant les fichiers du projet sur votre ordinateur.
 2) **Ouvrir un Terminal** : Ouvrez un terminal dans le dossier racine du projet.
 
 3) **Compiler le Code Source** : Exécutez la commande suivante pour compiler les fichiers .java :
-bash
-```javac ./src/Affichages*.java ./src/Colonie*.java ./src/DataAccess*.java ./src/ExceptionColonie*.java ./src/Main*.java ./src/Menus*.java ./src/Service*.java -d bin```
-
+```bash
+javac ./src/Affichages*.java ./src/Colonie*.java ./src/DataAccess*.java ./src/ExceptionColonie*.java ./src/Main*.java ./src/Menus*.java ./src/Service*.java -d bin
+```
 
 4.1) **Exécuter le programme** : Une fois la compilation terminée, exécutez le programme avec :
-bash
+```bash
 java -cp bin Main.Main
-
+```
 
 4.2) **Exécuter avec un fichier** : Pour lire un fichier spécifique et accéder au menu 3, utilisez la commande suivante en remplaçant //cheminFichierConfigurationColonie par le chemin réel du fichier :
-bash
+```bash
 java -cp bin Main.Main //cheminFichierConfigurationColonie
+```
 
 Le fichier de configuration doit avoir le même format que le fichier colonie.txt .
-
 
 
 ## Fonctionnement des Menus
