@@ -1,4 +1,4 @@
-﻿# Projet de Gestion des Ressources attribuées dans une colonie spatiale
+﻿# Projet de Gestion des Ressources Attribuées dans une colonie spatiale
 
 
 ## Description
